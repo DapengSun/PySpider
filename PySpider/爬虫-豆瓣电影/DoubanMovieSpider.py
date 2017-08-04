@@ -1,25 +1,32 @@
 #coding:utf-8
 import re
+import json
 import urllib2
 import sys
 import MySQLdb
 import time
+from datetime import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
 db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset='utf8')
 
-class Weather_Forecast:
+class douban_Film:
     def __init__(self):
+        self.BaseUrl = 'https://movie.douban.com'
+        self.BaseAjaxUrl = 'https://movie.douban.com/j/chart/top_list?'
+        self.StartNum = 0
+        self.LimitNum = 300
         self.user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         self.headers = { 'User-Agent':self.user_agent }
         cursor = db.cursor()
         self.cuesor = cursor
 
-    def getProviceContent(self):
+    # 热门电影
+    def GetHotFilm(self):
         try:
-            ProviceUrl = 'http://weather.sina.com.cn/'
-            request = urllib2.Request(ProviceUrl,headers=self.headers)
+            MovieUrl = self.BaseUrl
+            request = urllib2.Request(MovieUrl,headers=self.headers)
             response = urllib2.urlopen(request)
             pageCode = response.read().decode('utf-8')
 
@@ -27,33 +34,44 @@ class Weather_Forecast:
                 print "页面加载失败...."
                 return None
 
-            Weather_Provice_Regex = re.compile(r'(?<=<div class="wnbc_piC">)[\S\s]*?(?=</div>)')
-            Weather_Provices = re.findall(Weather_Provice_Regex,pageCode)
-            for Provices in Weather_Provices:
-
-                Provices_Regex = re.compile(r'<a[\S\s]*?</a>')
-                ProvicesList = re.findall(Provices_Regex,Provices)
-
-                for Provice in ProvicesList:
-                    # 省份名称
-                    Provices_NameString_Regex = re.compile(r'<a[\S\s]*?</a>')
-                    ProviceNameString = re.search(Provices_NameString_Regex, Provice).group()
-                    Provices_Name_Regex = re.compile(r'(?<=>)[\S\s]*?(?=</a>)')
-                    Provice_Name = re.search(Provices_Name_Regex, ProviceNameString).group()
-                    # print Provice_Name
-
-                    # 省份天气URL
-                    Provice_Url_Regex = re.compile(r'(?<=href=")[\S\s]*?(?=")')
-                    Provice_Url = re.search(Provice_Url_Regex, Provice).group()
-                    # print Provice_Url
-                    self.getWeatherContent(Provice_Name,Provice_Url)
         except Exception,ex:
             print ex
 
-    def getWeatherContent(self,ProviceName,Provice_Url):
+    # 获取电影排行榜
+    def GetTopRankFilm(self):
         try:
-            WeatherUrl = Provice_Url
-            request = urllib2.Request(WeatherUrl, headers=self.headers)
+            MoviesType = self.GetTopRankTypeFilm()
+            for TypeItem in MoviesType:
+                # 获取电影分类名称
+                MoviesTypeNameRegex = re.compile(r'(?<=">)[\s\S]*?(?=</a>)')
+                MoviesTypeName = re.search(MoviesTypeNameRegex,TypeItem).group()
+
+                # 获取电影分类URL
+                MoviesTypeUrlRegex = re.compile(r'(?<=<a href=")[\s\S]*?(?=">)')
+                MoviesTypeUrl = re.search(MoviesTypeUrlRegex,TypeItem).group()
+
+                # 获取电影分类Ajax获取数据URL
+                MoviesTypeAjaxUrlRegex = re.compile(r'(?<=&)[\S\s]*?(?=">)')
+                MoviesTypeAjaxUrl = re.search(MoviesTypeAjaxUrlRegex, TypeItem).group()
+
+                # 获取电影分类ID
+                MoviesTypeNumRegex = re.compile(r'(?<=type=)[\s\S]*?(?=&)')
+                MoviesTypeNum = re.search(MoviesTypeNumRegex,TypeItem).group()
+
+                start = time.time()
+                print '豆瓣%s类型电影排行开始抓取！' % (MoviesTypeName)
+                self.GetTopRankFilmList(MoviesTypeName,MoviesTypeUrl,MoviesTypeNum,str(MoviesTypeAjaxUrl))
+                end = time.time()
+                print '豆瓣%s类型电影排行抓取完成！' % (MoviesTypeName)
+                print '耗时%.2f！s' % (end-start)
+        except Exception,ex:
+            print ex
+
+    # 获取电影排行榜类型
+    def GetTopRankTypeFilm(self):
+        try:
+            TopRankMovieUrl = self.BaseUrl + '/chart'
+            request = urllib2.Request(TopRankMovieUrl, headers=self.headers)
             response = urllib2.urlopen(request)
             pageCode = response.read().decode('utf-8')
 
@@ -61,81 +79,62 @@ class Weather_Forecast:
                 print "页面加载失败...."
                 return None
 
-            # 当前时间
-            CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+            # 获取电影分类Div
+            MoviesTypesDivRegex = re.compile(r'(?<=<div class="types">)[\S\s]*?(?=</div>)')
+            MoviesTypes = re.search(MoviesTypesDivRegex,pageCode).group()
 
-            # 按照市划分
-            CityAndCountysRegex = re.compile(r'<div class="wd_cmain">[\S\s]*?</div>[\S\s]*?</div>')
-            CityAndCountys = re.findall(CityAndCountysRegex,pageCode)
+            # 获取电影分类
+            MoviesTypeRegex = re.compile(r'(?<=<span>)[\s\S]*?(?=</span>)')
+            MoviesType = re.findall(MoviesTypeRegex,MoviesTypes)
 
-            # 遍历市
-            for CityAndCounty in CityAndCountys:
-                # 市名称
-                CityRegex = re.compile(r'(?<=<div class="wd_cmh">)[\S\s]*?(?=</div>)')
-                CityName = re.search(CityRegex, CityAndCounty).group().strip('\r\n').replace("\n", "").strip()
-                # print CityName
-
-                Weathers_Regex = re.compile(r'<table class="wd_cm_table">[\S\s]*?</table>')
-                Weathers = re.findall(Weathers_Regex,CityAndCounty)
-                # 按县/区遍历
-                for Weather in Weathers:
-                    City_Weather_Detail_Regex = re.compile(r'(?<=<tr>)[\S\s]*?</tr>')
-                    CityWeatherDetails = re.findall(City_Weather_Detail_Regex,Weather)
-                    for CityWeatherDetail in CityWeatherDetails:
-                        # 按天气详情（td）遍历
-                        Weather_Detail_Regex = re.compile(r'<td[\S\s]*?td>')
-                        WeatherDetails = re.findall(Weather_Detail_Regex,CityWeatherDetail)
-
-                        # 区县名称
-                        CountyNameStringRegex = re.compile(r'<a href=[\S\s]*?</a>')
-                        CountyNameString = re.search(CountyNameStringRegex, WeatherDetails[0]).group()
-                        CountyNameRegex = re.compile(r'(?<=>)[\S\s]*?(?=</a>)')
-                        CountyName = re.search(CountyNameRegex, CountyNameString).group()
-                        # print CountyName
-
-                        # 天气状况（早）
-                        Morning_WeatherConditionRegex = re.compile(r'(?<=<p class="wd_cmt_txt">)[\S\s]*?(?=</p>)')
-                        Morning_WeatherCondition = re.search(Morning_WeatherConditionRegex, WeatherDetails[1]).group()
-                        # print Morning_WeatherCondition
-
-                        # 风力方向（早）
-                        Morning_WindConditionStringRegex = re.compile(r'(?<=<td style="width:125px;")[\S\s]*?(?=</td>)')
-                        Morning_WindConditionString = re.search(Morning_WindConditionStringRegex, WeatherDetails[2]).group()
-                        Morning_WindConditionRegex = re.compile(r'(?<=>)[\S\s]*')
-                        Morning_WindCondition= re.search(Morning_WindConditionRegex, Morning_WindConditionString).group().replace(' &lt;','<')
-                        # print Morning_WindCondition
-
-                        # 最高温度（早）
-                        Morning_TopTemperatureRegex = re.compile(r'(?<=<td style="width:125px;">)[\S\s]*?(?=</td>)')
-                        Morning_TopTemperature = re.search(Morning_TopTemperatureRegex, WeatherDetails[3]).group()
-                        # print Morning_TopTemperature
-
-                        # 天气状况（晚）
-                        Evening_WeatherConditionRegex = re.compile(r'(?<=<p class="wd_cmt_txt">)[\S\s]*?(?=</p>)')
-                        Evening_WeatherCondition = re.search(Evening_WeatherConditionRegex, WeatherDetails[4]).group()
-                        # print Evening_WeatherCondition
-
-                        # 风力方向（晚）
-                        Evening_WindConditionStringRegex = re.compile(r'(?<=<td style="width:125px;")[\S\s]*?(?=</td>)')
-                        Evening_WindConditionString = re.search(Evening_WindConditionStringRegex, WeatherDetails[5]).group()
-                        Evening_WindConditionRegex = re.compile(r'(?<=>)[\S\s]*')
-                        Evening_WindCondition = re.search(Evening_WindConditionRegex, Evening_WindConditionString).group().replace(' &lt;','<')
-                        # print Evening_WindCondition
-
-                        # 最低温度（晚）
-                        Evening_LowTemperatureRegex = re.compile(r'(?<=<td style="width:125px;">)[\S\s]*?(?=</td>)')
-                        Evening_LowTemperature = re.search(Evening_LowTemperatureRegex, WeatherDetails[6]).group()
-                        # print Evening_LowTemperature
-
-                        Sql = 'Insert into weatherforecastdata(ProviceName,ProviceWeatherUrl,CityName,CountyName,MorningWeatherCondition,MorningWindCondition,' \
-                              'MorningTopTemperature,EveningWeatherCondition,EveningWindCondition,EveningLowTemperature,CDate) values("%s","%s","%s","%s","%s","%s"' \
-                              ',"%s","%s","%s","%s","%s")'% (ProviceName, Provice_Url, CityName,CountyName,Morning_WeatherCondition,Morning_WindCondition,Morning_TopTemperature,
-                              Evening_WeatherCondition,Evening_WindCondition,Evening_LowTemperature,CDate)
-                        self.cuesor.execute(Sql)
-                        db.commit()
-        except Exception,ex:
+            return MoviesType
+        except Exception, ex:
             print ex
 
-_weather = Weather_Forecast()
-_weather.getProviceContent()
-db.close()
+    # 获取电影排行榜电影清单
+    def GetTopRankFilmList(self,MoviesTypeName,MoviesTypeUrl,MoviesTypeNum,MoviesTypeAjaxUrl):
+        try:
+            MovieFilmListUrl = self.BaseAjaxUrl + MoviesTypeAjaxUrl + "&start=" + str(self.StartNum) + "&limit=" + str(self.LimitNum)
+            request = urllib2.Request(MovieFilmListUrl, headers=self.headers)
+            response = urllib2.urlopen(request)
+            pageCode = response.read().decode('utf-8')
+
+            if not pageCode:
+                print "页面加载失败...."
+                return None
+
+            AjaxFilmList = json.loads(pageCode)
+            for Film in AjaxFilmList:
+                FilmTitle = Film['title']
+                FilmType = MoviesTypeName
+                FilmRank = Film['rank']
+                FilmUrl = Film['url']
+                FilmActors = ';'.join(Film['actors'])
+                FilmTags = ';'.join(Film['types'])
+                FilmYears = Film['release_date']
+                FilmRegions = ';'.join(Film['regions'])
+                FilmScore = Film['score']
+                FilmVoteCount = Film['vote_count']
+                FilmCoverUrl = Film['cover_url']
+                FilmPlayable = Film['is_playable']
+                if FilmPlayable:
+                    FilmPlayable = 0
+                else:
+                    FilmPlayable = 1
+
+                # 当前时间
+                CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+
+                Sql = 'Insert into douban_toprankfilm(FilmTitle,FilmType,FilmRankNum,FilmInfoUrl,FilmActor,FilmMisc,' \
+                      'FilmYear,FilmRegion,FilmRateNum,FilmCommentNum,FilmPlayable,FilmCover,CDate) values("%s","%s","%s","%s","%s","%s"' \
+                      ',"%s","%s","%s","%s","%s","%s","%s")' % (
+                        FilmTitle, FilmType, FilmRank, FilmUrl, FilmActors, FilmTags,
+                        FilmYears,FilmRegions, FilmScore, FilmVoteCount,FilmPlayable,FilmCoverUrl,CDate)
+                self.cuesor.execute(Sql)
+                db.commit()
+
+        except Exception, ex:
+            print ex
+
+_douban_Film = douban_Film()
+_douban_Film.GetTopRankFilm()
