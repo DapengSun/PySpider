@@ -9,7 +9,7 @@ from datetime import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset='utf8')
+db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset='utf8mb4')
 
 class douban_FilmReviews:
     def __init__(self):
@@ -40,8 +40,14 @@ class douban_FilmReviews:
             for i in range(0,len(FilmUrls)):
                 for j in range(0,5):
                     FilmUrl = FilmUrls[i] + 'reviews?start=' + str(j*20)
+
+                    if DoubanFilmIds[i] == '5450891':
+                        FilmUrl = FilmUrl
                     request = urllib2.Request(FilmUrl, headers=self.headers)
-                    response = urllib2.urlopen(request)
+                    try:
+                        response = urllib2.urlopen(request)
+                    except Exception,ex:
+                        continue
                     pageCode = response.read().decode('utf-8')
 
                     if not pageCode:
@@ -72,9 +78,6 @@ class douban_FilmReviews:
                         # 获取电影影评作者名称
                         ReviewAuthorNameRegex = re.compile(r'(?<=<span property="v:reviewer">)[\S\s]*?(?=</span>)')
                         ReviewAuthorName = re.search(ReviewAuthorNameRegex, Review).group()
-
-                        if str(ReviewAuthorName) == '闫琦':
-                            tt = ReviewAuthorName
 
                         # 获取电影影评评分
                         ReviewScoresRegex = re.compile(r'<span property="v:rating" class="allstar[\S\s]*?</span>')
