@@ -63,7 +63,7 @@ class douban_Film:
                 self.GetTopRankFilmList(MoviesTypeName,MoviesTypeUrl,MoviesTypeNum,str(MoviesTypeAjaxUrl))
                 end = time.time()
                 print '豆瓣%s类型电影排行抓取完成！' % (MoviesTypeName)
-                print '耗时%.2f！s' % (end-start)
+                print '耗时%.2fs！' % (end-start)
         except Exception,ex:
             print ex
 
@@ -121,15 +121,16 @@ class douban_Film:
                     FilmPlayable = 0
                 else:
                     FilmPlayable = 1
+                DoubanFilmId = Film['id']
 
                 # 当前时间
                 CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
                 Sql = 'Insert into douban_toprankfilm(FilmTitle,FilmType,FilmRankNum,FilmInfoUrl,FilmActor,FilmMisc,' \
-                      'FilmYear,FilmRegion,FilmRateNum,FilmCommentNum,FilmPlayable,FilmCover,CDate) values("%s","%s","%s","%s","%s","%s"' \
-                      ',"%s","%s","%s","%s","%s","%s","%s")' % (
+                      'FilmYear,FilmRegion,FilmRateNum,FilmCommentNum,FilmPlayable,FilmCover,CDate,DoubanFilmId) values("%s","%s","%s","%s","%s","%s"' \
+                      ',"%s","%s","%s","%s","%s","%s","%s","%s")' % (
                         FilmTitle, FilmType, FilmRank, FilmUrl, FilmActors, FilmTags,
-                        FilmYears,FilmRegions, FilmScore, FilmVoteCount,FilmPlayable,FilmCoverUrl,CDate)
+                        FilmYears,FilmRegions, FilmScore, FilmVoteCount,FilmPlayable,FilmCoverUrl,CDate,DoubanFilmId)
                 self.cuesor.execute(Sql)
                 db.commit()
 
