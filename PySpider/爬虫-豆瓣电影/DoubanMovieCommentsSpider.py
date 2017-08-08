@@ -9,13 +9,13 @@ from datetime import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset='utf8mb4')
+db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset="utf8")
 
 class douban_FilmReviews:
     def __init__(self):
         self.BaseUrl = 'https://movie.douban.com'
         self.BaseAjaxUrl = 'https://movie.douban.com/j/review/'
-        self.PageNum = 5
+        self.PageNum = 1
         self.user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         self.headers = { 'User-Agent':self.user_agent }
         cursor = db.cursor()
@@ -139,21 +139,39 @@ class douban_FilmReviews:
                             ReviewContent = AjaxFilmReviewList['html']
                             ReviewContentReturn = int('0')
 
+                        if ReviewTitle == '这是一部伟大的电影':
+                            ReviewTitle = ReviewTitle
+
                         # 当前时间
                         CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                         Sql = 'Insert into douban_filmreview(DoubanFilmId,ReviewTitle,ReviewLink,ReviewAuthorAvatar,ReviewAuthorName,' \
                               'ReviewScore,ReviewDate,ReviewContent,ReviewReturn,CDate,ReviewScoreName,DoubanFilmReviewId) values("%s","%s","%s","%s","%s"' \
                               ',"%s","%s","%s","%s","%s","%s","%s")' % (
-                                DoubanFilmIds[i], ReviewTitle, ReviewLink, ReviewAuthorAvatar, ReviewAuthorName, ReviewScore,
-                                ReviewDate, ReviewContent.strip().replace("\"","'"), ReviewContentReturn,CDate,ReviewScoreName,ReviewId)
-
-                        commitCursor = db.cursor()
-                        commitCursor.execute(Sql)
-                        db.commit()
+                                DoubanFilmIds[i], ReviewTitle, ReviewLink, ReviewAuthorAvatar, self.DeleteEmoji(ReviewAuthorName), ReviewScore,
+                                ReviewDate, self.DeleteEmoji(ReviewContent.strip().replace("\"","'")), ReviewContentReturn,CDate,ReviewScoreName,ReviewId)
+                        try:
+                            commitCursor = db.cursor()
+                            commitCursor.execute(Sql)
+                            db.commit()
+                        except Exception,ex:
+                            continue
 
         except Exception,ex:
             print ex
 
+    def DeleteEmoji(self,text):
+        try:
+            emoji_pattern = re.compile(
+                u"(\ud83d[\ude00-\ude4f])|"  # emoticons
+                u"(\ud83c[\udf00-\uffff])|"  # symbols & pictographs (1 of 2)
+                u"(\ud83d[\u0000-\uddff])|"  # symbols & pictographs (2 of 2)
+                u"(\ud83d[\ude80-\udeff])|"  # transport & map symbols
+                u"(\ud83c[\udde0-\uddff])"  # flags (iOS)
+                "+", flags=re.UNICODE)
+
+            return emoji_pattern.sub(r'', text)
+        except Exception,ex:
+            return ''
 
 _douban_FilmFilmReviews = douban_FilmReviews()
 _douban_FilmFilmReviews.GetFilmReviews()
