@@ -9,7 +9,7 @@ from datetime import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset="utf8")
+db = MySQLdb.connect("localhost", "root", "sdmp", "spiderdb",charset="utf8mb4")
 
 class douban_FilmReviews:
     def __init__(self):
@@ -41,8 +41,6 @@ class douban_FilmReviews:
                 for j in range(0,5):
                     FilmUrl = FilmUrls[i] + 'reviews?start=' + str(j*20)
 
-                    if DoubanFilmIds[i] == '5450891':
-                        FilmUrl = FilmUrl
                     request = urllib2.Request(FilmUrl, headers=self.headers)
                     try:
                         response = urllib2.urlopen(request)
@@ -138,9 +136,6 @@ class douban_FilmReviews:
                             AjaxFilmReviewList = json.loads(pageCode)
                             ReviewContent = AjaxFilmReviewList['html']
                             ReviewContentReturn = int('0')
-
-                        if ReviewTitle == '这是一部伟大的电影':
-                            ReviewTitle = ReviewTitle
 
                         # 当前时间
                         CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
