@@ -4,6 +4,7 @@ import urllib2
 import sys
 import MySQLdb
 import time
+from multiprocessing.dummy import Pool as ThreadPool
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
@@ -14,12 +15,28 @@ class House:
         self.user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         # 初始化headers
         self.Headers = {'User-Agent': self.user_agent}
-        cursor = db.cursor()
-        self.cuesor = cursor
 
-    def loadPage(self,pageIndex):
+
+    def loadPage(self,EndNum):
         try:
-            url = 'https://bj.lianjia.com/ershoufang/pg' + str(pageIndex) + '/'
+            urls = []
+            for i in range(self.pageIndex,EndNum):
+                url = 'https://bj.lianjia.com/ershoufang/pg' + str(i) + '/'
+                urls.append(url)
+
+            pool = ThreadPool(4)
+            pool.map(self.getData,urls)
+            print 'Waiting for all subprocesses done...'
+            pool.close()
+            pool.join()  # 调用join之前，一定要先调用close() 函数，否则会出错, close()执行后不会有新的进程加入到pool,join函数等待素有子进程结束
+            print 'All subprocesses done.'
+        except Exception,ex:
+            print ex
+
+    def getData(self,url):
+        try:
+            print '开始获取%s页面数据！' % url
+
             request = urllib2.Request(url,headers=self.Headers)
             response = urllib2.urlopen(request)
             pageCode = response.read().decode('utf-8')
@@ -33,6 +50,8 @@ class House:
             content = re.compile(r'<li class="clear">([\S\s]*?)</li>')
             items = re.findall(content,pageCode)
 
+            db.ping(True)
+            cursor = db.cursor()
             for item in items:
                 # 标题
                 parTitle = re.compile(r'(?<=<div class="title">)[\S\s]*?(?=</div>)')
@@ -180,22 +199,18 @@ class House:
                       haskey,HouseTotalPrice,HousePrice,CDate,0,TotalPriceUnit,PriceUnit,HouseRangeNum,HouseLikeNum,HouseLookNum)
 
                 # print Sql
-                self.cuesor.execute(Sql)
+                cursor.execute(Sql)
                 db.commit()
+
+            print '获取%s页面数据结束！' % url
+            cursor.close()
             return True
         except Exception,ex:
             print ex
             return False
 
-    def Start(self):
-        flag = self.loadPage(self.pageIndex)
-        if flag == True:
-            print '第%s页数据获取成功！' % self.pageIndex
-        else:
-            print '第%s页数据获取失败！' % self.pageIndex
+    def Start(self,EndNum):
+        flag = self.loadPage(EndNum)
 
-for i in range(1,5):
-    _house = House()
-    _house.pageIndex = i
-    _house.Start()
-db.close()
+_house = House()
+_house.Start(3)
