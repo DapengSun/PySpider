@@ -5,6 +5,8 @@ import urllib2
 import sys
 import MySQLdb
 import time
+import requests
+from bs4 import BeautifulSoup
 from datetime import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
@@ -21,8 +23,21 @@ class douban_FilmReviews:
         cursor = db.cursor()
         self.cursor = cursor
 
+    # 获取高匿IP
+    def get_ip_list(self):
+        url = 'http://www.xicidaili.com/nn/'
+        web_data = requests.get(url , headers=self.headers)
+        soup = BeautifulSoup(web_data.text, 'lxml')
+        ips = soup.find_all('tr')
+        ip_list = []
+        for i in range(1, len(ips)):
+            ip_info = ips[i]
+            tds = ip_info.find_all('td')
+            ip_list.append(tds[1].text + ':' + tds[2].text)
+        return ip_list
+
     # 获取电影评论
-    def GetFilmReviews(self):
+    def GetFilmReviews(self,proxies_list):
         try:
             Date = time.strftime('%Y-%m-%d',time.localtime(time.time()))
             self.cursor.callproc("GetFilmList",[str(Date)])
@@ -36,120 +51,134 @@ class douban_FilmReviews:
 
             self.cursor.close()
 
-            # 通过URL获取影评
-            for i in range(0,len(FilmUrls)):
-                for j in range(0,5):
-                    FilmUrl = FilmUrls[i] + 'reviews?start=' + str(j*20)
+            new_skip = 0
+            old_skip = 0
+            for proxies_ip in  proxies_list:
 
-                    request = urllib2.Request(FilmUrl, headers=self.headers)
-                    try:
-                        response = urllib2.urlopen(request)
-                    except Exception,ex:
-                        continue
-                    pageCode = response.read().decode('utf-8')
+                new_skip = old_skip
+                # 通过URL获取影评
+                for i in range(new_skip,len(FilmUrls)):
+                    for j in range(0,5):
+                        FilmUrl = FilmUrls[i] + 'reviews?start=' + str(j*20)
 
-                    if not pageCode:
-                        print "页面加载失败...."
-                        return None
+                        old_skip = old_skip + 1
 
-                    # 获取电影影评
-                    MoviesReviewsRegex = re.compile(r'<div class="main review-item"[\s\S]*?<div class="main-bd">[\s\S]*?</div>[\s\S]*?<div id="review[\s\S]*?</div>')
-                    MoviesReviews = re.findall(MoviesReviewsRegex, pageCode)
+                        #设置使用代理
+                        proxy = { 'http' : proxies_ip }
+                        proxy_support = urllib2.ProxyHandler(proxy)
+                        opener = urllib2.build_opener(proxy_support)
+                        urllib2.install_opener(opener)
 
-                    for Review in MoviesReviews:
-                        # 获取电影影评ID
-                        ReviewIdRegex = re.compile(r'(?<=<div class="main review-item" id=")[\S\s]*?(?=">)')
-                        ReviewId = re.search(ReviewIdRegex, Review).group()
-
-                        # 获取电影影评名称
-                        ReviewTitleRegex = re.compile(r'(?<=class="title-link">)[\S\s]*?(?=</a>)')
-                        ReviewTitle = re.search(ReviewTitleRegex, Review).group()
-
-                        # 获取电影影评链接
-                        ReviewLinkRegex = re.compile(r'(?<=<a href=")[\s\S]*?(?=" class="title-link")')
-                        ReviewLink = re.search(ReviewLinkRegex, Review).group()
-
-                        # 获取电影影评作者头像链接
-                        ReviewAuthorAvatarRegex = re.compile(r'(?<=<img width="48" height="48" src=")[\S\s]*?(?="></a>)')
-                        ReviewAuthorAvatar = re.search(ReviewAuthorAvatarRegex, Review).group()
-
-                        # 获取电影影评作者名称
-                        ReviewAuthorNameRegex = re.compile(r'(?<=<span property="v:reviewer">)[\S\s]*?(?=</span>)')
-                        ReviewAuthorName = re.search(ReviewAuthorNameRegex, Review).group()
-
-                        # 获取电影影评评分
-                        ReviewScoresRegex = re.compile(r'<span property="v:rating" class="allstar[\S\s]*?</span>')
-                        ReviewScores = re.search(ReviewScoresRegex, Review)
-
-                        if not ReviewScores:
-                            ReviewScore = ''
-                            ReviewScoreName = ''
-
-                        else:
-                            ReviewScores = re.search(ReviewScoresRegex, Review).group()
-                            ReviewScoreRegex = re.compile(r'(?<=class="allstar)[\s\S]*?(?= main-title-rating")')
-                            ReviewScore = re.search(ReviewScoreRegex, ReviewScores).group()
-                            ReviewScoreNameRegex = re.compile(r'(?<=main-title-rating" title=")[\s\S]*?(?="></span>)')
-                            ReviewScoreName = re.search(ReviewScoreNameRegex, ReviewScores).group()
-
-                        # 获取电影影评日期
-                        ReviewDateRegex = re.compile(r'(?<=class="main-meta">)[\s\S]*?(?=</span>)')
-                        ReviewDate = re.search(ReviewDateRegex, Review).group()
-
-                        # 获取电影影评内容
-                        ReviewContentsRegex = re.compile(r'(?<=<div class="short-content">)[\s\S]*?(?=</div>)')
-                        ReviewContents = re.search(ReviewContentsRegex, Review).group()
-
-                        # 判断该影评是否能够访问 不能显示 则通过Ajax获取
-                        ReviewContentTipRegex = re.compile(r'(?<=<p class="main-title-tip">)[\s\S]*?(?=</p>)')
-                        ReviewContentTip = re.search(ReviewContentTipRegex, ReviewContents)
-
-                        if not ReviewContentTip:
-                            # 判断该影评回应数目
-                            ReviewContentReturnsRegex = re.compile(r'<a class="pl" [\s\S]*?</a>')
-                            ReviewContentReturns = re.search(ReviewContentReturnsRegex, ReviewContents)
-
-                            # 判断该影评是否有影评回复
-                            if not ReviewContentReturns:
-                                ReviewContentRegex = re.compile(r'[\s\S]*?(?=<div class="more-info pl clearfix">)')
-                                ReviewContent = re.search(ReviewContentRegex, ReviewContents).group()
-
-                                ReviewContentReturn = int('0')
-                            else:
-                                ReviewContentRegex = re.compile(r'[\s\S]*?(?=<a class="pl")')
-                                ReviewContent = re.search(ReviewContentRegex, ReviewContents).group()
-
-                                # 获取电影影评反应数量
-                                ReviewContentReturnRegex = re.compile(r'(?<=#comments">\()[\s\S]*?(?=回应\)</a>)')
-                                ReviewContentReturn= int(re.search(ReviewContentReturnRegex, str(ReviewContents)).group())
-
-                        else:
-                            AjaxUrl = self.BaseAjaxUrl + ReviewId + '/full'
-                            request = urllib2.Request(AjaxUrl, headers=self.headers)
-                            response = urllib2.urlopen(request)
-                            pageCode = response.read().decode('utf-8')
-
-                            if not pageCode:
-                                print "页面加载失败...."
-                                return None
-
-                            AjaxFilmReviewList = json.loads(pageCode)
-                            ReviewContent = AjaxFilmReviewList['html']
-                            ReviewContentReturn = int('0')
-
-                        # 当前时间
-                        CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-                        Sql = 'Insert into douban_filmreview(DoubanFilmId,ReviewTitle,ReviewLink,ReviewAuthorAvatar,ReviewAuthorName,' \
-                              'ReviewScore,ReviewDate,ReviewContent,ReviewReturn,CDate,ReviewScoreName,DoubanFilmReviewId) values("%s","%s","%s","%s","%s"' \
-                              ',"%s","%s","%s","%s","%s","%s","%s")' % (
-                                DoubanFilmIds[i], ReviewTitle, ReviewLink, ReviewAuthorAvatar, self.DeleteEmoji(ReviewAuthorName), ReviewScore,
-                                ReviewDate, self.DeleteEmoji(ReviewContent.strip().replace("\"","'")), ReviewContentReturn,CDate,ReviewScoreName,ReviewId)
+                        request = urllib2.Request(FilmUrl, headers=self.headers)
                         try:
-                            commitCursor = db.cursor()
-                            commitCursor.execute(Sql)
-                            db.commit()
+                            response = urllib2.urlopen(request)
                         except Exception,ex:
-                            continue
+                            break
+
+                        pageCode = response.read().decode('utf-8')
+
+                        if not pageCode:
+                            print "页面加载失败...."
+                            return None
+
+                        # 获取电影影评
+                        MoviesReviewsRegex = re.compile(r'<div class="main review-item"[\s\S]*?<div class="main-bd">[\s\S]*?</div>[\s\S]*?<div id="review[\s\S]*?</div>')
+                        MoviesReviews = re.findall(MoviesReviewsRegex, pageCode)
+
+                        for Review in MoviesReviews:
+                            # 获取电影影评ID
+                            ReviewIdRegex = re.compile(r'(?<=<div class="main review-item" id=")[\S\s]*?(?=">)')
+                            ReviewId = re.search(ReviewIdRegex, Review).group()
+
+                            # 获取电影影评名称
+                            ReviewTitleRegex = re.compile(r'(?<=class="title-link">)[\S\s]*?(?=</a>)')
+                            ReviewTitle = re.search(ReviewTitleRegex, Review).group()
+
+                            # 获取电影影评链接
+                            ReviewLinkRegex = re.compile(r'(?<=<a href=")[\s\S]*?(?=" class="title-link")')
+                            ReviewLink = re.search(ReviewLinkRegex, Review).group()
+
+                            # 获取电影影评作者头像链接
+                            ReviewAuthorAvatarRegex = re.compile(r'(?<=<img width="48" height="48" src=")[\S\s]*?(?="></a>)')
+                            ReviewAuthorAvatar = re.search(ReviewAuthorAvatarRegex, Review).group()
+
+                            # 获取电影影评作者名称
+                            ReviewAuthorNameRegex = re.compile(r'(?<=<span property="v:reviewer">)[\S\s]*?(?=</span>)')
+                            ReviewAuthorName = re.search(ReviewAuthorNameRegex, Review).group()
+
+                            # 获取电影影评评分
+                            ReviewScoresRegex = re.compile(r'<span property="v:rating" class="allstar[\S\s]*?</span>')
+                            ReviewScores = re.search(ReviewScoresRegex, Review)
+
+                            if not ReviewScores:
+                                ReviewScore = ''
+                                ReviewScoreName = ''
+
+                            else:
+                                ReviewScores = re.search(ReviewScoresRegex, Review).group()
+                                ReviewScoreRegex = re.compile(r'(?<=class="allstar)[\s\S]*?(?= main-title-rating")')
+                                ReviewScore = re.search(ReviewScoreRegex, ReviewScores).group()
+                                ReviewScoreNameRegex = re.compile(r'(?<=main-title-rating" title=")[\s\S]*?(?="></span>)')
+                                ReviewScoreName = re.search(ReviewScoreNameRegex, ReviewScores).group()
+
+                            # 获取电影影评日期
+                            ReviewDateRegex = re.compile(r'(?<=class="main-meta">)[\s\S]*?(?=</span>)')
+                            ReviewDate = re.search(ReviewDateRegex, Review).group()
+
+                            # 获取电影影评内容
+                            ReviewContentsRegex = re.compile(r'(?<=<div class="short-content">)[\s\S]*?(?=</div>)')
+                            ReviewContents = re.search(ReviewContentsRegex, Review).group()
+
+                            # 判断该影评是否能够访问 不能显示 则通过Ajax获取
+                            ReviewContentTipRegex = re.compile(r'(?<=<p class="main-title-tip">)[\s\S]*?(?=</p>)')
+                            ReviewContentTip = re.search(ReviewContentTipRegex, ReviewContents)
+
+                            if not ReviewContentTip:
+                                # 判断该影评回应数目
+                                ReviewContentReturnsRegex = re.compile(r'<a class="pl" [\s\S]*?</a>')
+                                ReviewContentReturns = re.search(ReviewContentReturnsRegex, ReviewContents)
+
+                                # 判断该影评是否有影评回复
+                                if not ReviewContentReturns:
+                                    ReviewContentRegex = re.compile(r'[\s\S]*?(?=<div class="more-info pl clearfix">)')
+                                    ReviewContent = re.search(ReviewContentRegex, ReviewContents).group()
+
+                                    ReviewContentReturn = int('0')
+                                else:
+                                    ReviewContentRegex = re.compile(r'[\s\S]*?(?=<a class="pl")')
+                                    ReviewContent = re.search(ReviewContentRegex, ReviewContents).group()
+
+                                    # 获取电影影评反应数量
+                                    ReviewContentReturnRegex = re.compile(r'(?<=#comments">\()[\s\S]*?(?=回应\)</a>)')
+                                    ReviewContentReturn= int(re.search(ReviewContentReturnRegex, str(ReviewContents)).group())
+
+                            else:
+                                AjaxUrl = self.BaseAjaxUrl + ReviewId + '/full'
+                                request = urllib2.Request(AjaxUrl, headers=self.headers)
+                                response = urllib2.urlopen(request)
+                                pageCode = response.read().decode('utf-8')
+
+                                if not pageCode:
+                                    print "页面加载失败...."
+                                    return None
+
+                                AjaxFilmReviewList = json.loads(pageCode)
+                                ReviewContent = AjaxFilmReviewList['html']
+                                ReviewContentReturn = int('0')
+
+                            # 当前时间
+                            CDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+                            Sql = 'Insert into douban_filmreview(DoubanFilmId,ReviewTitle,ReviewLink,ReviewAuthorAvatar,ReviewAuthorName,' \
+                                  'ReviewScore,ReviewDate,ReviewContent,ReviewReturn,CDate,ReviewScoreName,DoubanFilmReviewId) values("%s","%s","%s","%s","%s"' \
+                                  ',"%s","%s","%s","%s","%s","%s","%s")' % (
+                                    DoubanFilmIds[i], ReviewTitle, ReviewLink, ReviewAuthorAvatar, self.DeleteEmoji(ReviewAuthorName), ReviewScore,
+                                    ReviewDate, self.DeleteEmoji(ReviewContent.strip().replace("\"","'")), ReviewContentReturn,CDate,ReviewScoreName,ReviewId)
+                            try:
+                                commitCursor = db.cursor()
+                                commitCursor.execute(Sql)
+                                db.commit()
+                            except Exception,ex:
+                                continue
 
         except Exception,ex:
             print ex
@@ -168,5 +197,7 @@ class douban_FilmReviews:
         except Exception,ex:
             return ''
 
+
 _douban_FilmFilmReviews = douban_FilmReviews()
-_douban_FilmFilmReviews.GetFilmReviews()
+proxies_list = _douban_FilmFilmReviews.get_ip_list()
+_douban_FilmFilmReviews.GetFilmReviews(proxies_list)
