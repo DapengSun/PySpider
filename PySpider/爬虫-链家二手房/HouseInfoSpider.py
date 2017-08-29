@@ -195,7 +195,7 @@ class House:
         else:
             print '第%s页数据获取失败！' % self.pageIndex
 
-for i in range(1,5):
+for i in range(1,21):
     _house = House()
     _house.pageIndex = i
     _house.Start()
