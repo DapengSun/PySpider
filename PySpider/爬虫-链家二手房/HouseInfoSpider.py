@@ -4,6 +4,7 @@ import urllib2
 import sys
 import MySQLdb
 import time
+import LocationTrans
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
@@ -173,11 +174,11 @@ class House:
 
                 Sql = 'Insert into houseinfo(HouseTitle,HouseName,HousePattern,HouseRange,HouseFace,HouseStyle,IsElevator,' \
                       'HousePosition,HouseArea,HouseLike,HouseLook,HouseReleaseDate,traffic,taxfree,haskey,HouseTotalPrice,' \
-                      'HousePrice,CDate,Delflag,TotalPriceUnit,PriceUnit,HouseRangeNum,HouseLikeNum,HouseLookNum)' \
+                      'HousePrice,CDate,UpdateDate,Delflag,TotalPriceUnit,PriceUnit,HouseRangeNum,HouseLikeNum,HouseLookNum)' \
                       ' values("%s", "%s","%s","%s", "%s","%s","%s", "%s","%s","%s","%s", "%s","%s","%s", "%s","%s",' \
-                      '"%s", "%s","%s","%s", "%s","%s","%s","%s")' % (HouseTitle, HouseName, HousePattern,
+                      '"%s", "%s","%s","%s", "%s","%s","%s","%s","%s")' % (HouseTitle, HouseName, HousePattern,
                       HouseRange,HouseFace,HouseStyle,IsElevator,HousePosition,HouseArea,HouseLike,HouseLook,HouseReleaseDate,traffic,taxfree,
-                      haskey,HouseTotalPrice,HousePrice,CDate,0,TotalPriceUnit,PriceUnit,HouseRangeNum,HouseLikeNum,HouseLookNum)
+                      haskey,HouseTotalPrice,HousePrice,CDate,CDate,0,TotalPriceUnit,PriceUnit,HouseRangeNum,HouseLikeNum,HouseLookNum)
 
                 # print Sql
                 self.cuesor.execute(Sql)
@@ -199,3 +200,7 @@ for i in range(1,5):
     _house.pageIndex = i
     _house.Start()
 db.close()
+
+_locationTrans = LocationTrans.LocationTrans()
+Date = time.strftime('%Y-%m-%d',time.gmtime())
+_locationTrans.GetLocations(Date)

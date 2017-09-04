@@ -43,20 +43,20 @@ class LocationTrans:
                 LocationLng = LocationString['result']['location']['lng']
                 # 获取纬度
                 LocationLat = LocationString['result']['location']['lat']
+                # 修改时间
+                UpdateDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                 # 修改经度、纬度
-                UpdateLocSql = 'Update Houseinfo set HouseLocationlng = %f ,HouseLocationlat = %f where ID = %d' % (float(LocationLng) , float(LocationLat) , int(item[0]))
-                # Updatecursor = db.cursor()
+                UpdateLocSql = 'Update Houseinfo set HouseLocationlng = %f ,HouseLocationlat = %f , UpdateDate = "%s" where ID = %d' % (float(LocationLng) , float(LocationLat) , UpdateDate,int(item[0]))
                 self.Updatecursor.execute(UpdateLocSql)
                 db.commit()
 
             self.Updatecursor.close()
             self.cursor.close()
-
+            db.close()
         except Exception,ex:
             print ex
 
-
-_locationTrans = LocationTrans()
-Date = time.strftime('%Y-%m-%d',time.gmtime())
-_locationTrans.GetLocations(Date)
-db.close()
+# _locationTrans = LocationTrans()
+# Date = time.strftime('%Y-%m-%d',time.gmtime())
+# _locationTrans.GetLocations(Date)
+# db.close()
