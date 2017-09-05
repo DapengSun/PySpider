@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1503932609080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/爬虫-链家二手房" />
+    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1504013125059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/爬虫-链家二手房" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -22,7 +22,20 @@
     <favorites_list name="PySpider" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="HouseInfoSpider.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/HouseInfoSpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71862614">
+              <caret line="179" column="32" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="32" />
+              <folding>
+                <marker date="1504012946000" expanded="true" signature="7292:7824" placeholder="Insert into houseinfo... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -69,6 +82,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -159,7 +173,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -406,27 +419,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1436" height="877" extended-state="0" />
-    <editor active="false" />
+    <frame x="4" y="23" width="1436" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22238164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22812052" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866243" sideWeight="0.5028694" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.49713057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3210191" sideWeight="0.49713057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3210191" sideWeight="0.49713057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,13 +461,20 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/HouseInfoSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1504012946000" expanded="true" signature="7292:7824" placeholder="Insert into houseinfo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/爬虫-豆瓣电影/DoubanMovieSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -462,9 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="40" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="40" />
-          <folding>
-            <element signature="e#84#113#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -472,10 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503675480000" expanded="true" signature="8078:8417" placeholder="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -483,9 +496,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="11" selection-end-column="76" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -493,10 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503675480000" expanded="true" signature="8078:8417" placeholder="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -504,9 +510,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="29" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="29" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -514,10 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503675480000" expanded="true" signature="8078:8417" placeholder="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -525,9 +524,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="29" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="29" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -535,10 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503675480000" expanded="true" signature="8078:8417" placeholder="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -546,9 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -556,9 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -573,10 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7965654">
           <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503675480000" expanded="true" signature="8078:8417" placeholder="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -584,9 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6142669">
           <caret line="31" column="40" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="40" />
-          <folding>
-            <element signature="e#84#113#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,18 +573,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.01981506">
           <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <marker date="1502118693000" expanded="true" signature="4677:4991" placeholder="Insert into douban_toprankfilm... " />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/HouseInfoSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1980198">
+        <state vertical-scroll-proportion="0.71862614">
           <caret line="179" column="32" selection-start-line="179" selection-start-column="32" selection-end-line="179" selection-end-column="32" />
           <folding>
-            <marker date="1503932513000" expanded="true" signature="7292:7824" placeholder="Insert into houseinfo... " />
+            <marker date="1504012946000" expanded="true" signature="7292:7824" placeholder="Insert into houseinfo... " />
           </folding>
         </state>
       </provider>
