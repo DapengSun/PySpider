@@ -52,12 +52,11 @@ class LocationTrans:
 
             self.Updatecursor.close()
             self.cursor.close()
-            db.close()
             print '获取房屋经纬度完成！'
         except Exception,ex:
             print ex
 
-# _locationTrans = LocationTrans()
-# Date = time.strftime('%Y-%m-%d',time.gmtime())
-# _locationTrans.GetLocations(Date)
-# db.close()
+_locationTrans = LocationTrans()
+Date = time.strftime('%Y-%m-%d',time.gmtime())
+_locationTrans.GetLocations(Date)
+db.close()

@@ -201,6 +201,6 @@ for i in range(1,5):
     _house.Start()
 db.close()
 
-_locationTrans = LocationTrans.LocationTrans()
-Date = time.strftime('%Y-%m-%d',time.gmtime())
-_locationTrans.GetLocations(Date)
+# _locationTrans = LocationTrans.LocationTrans()
+# Date = time.strftime('%Y-%m-%d',time.gmtime())
+# _locationTrans.GetLocations(Date)
