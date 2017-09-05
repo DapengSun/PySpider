@@ -53,6 +53,7 @@ class LocationTrans:
             self.Updatecursor.close()
             self.cursor.close()
             db.close()
+            print '获取房屋经纬度完成！'
         except Exception,ex:
             print ex
 
