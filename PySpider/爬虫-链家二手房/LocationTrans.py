@@ -24,6 +24,7 @@ class LocationTrans:
     def GetLocations(self,Date):
         try:
             GetHouseSql = 'Select ID,HouseName from Houseinfo where Date(CDate) = "%s"' % str(Date)
+
             self.cursor.execute(GetHouseSql)
             HouseInfo = self.cursor.fetchall()
 
