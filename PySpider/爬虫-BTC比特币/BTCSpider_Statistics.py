@@ -27,7 +27,7 @@ class btc_Price_Statistics:
             self.cuesor.execute(Sql)
             rows = self.cuesor.fetchall()
 
-            if rows[0] > 1:
+            if len(rows) > 0:
                 LastPriceUSD = float(rows[0][2])
                 DaysLow = float(rows[0][5])
                 DaysHigh = float(rows[0][6])
@@ -42,9 +42,9 @@ class btc_Price_Statistics:
                 Sql = 'Select * from btc_price_statistics where Date(CDate) = Date(Now())'
                 self.cuesor.execute(Sql)
                 rows = self.cuesor.fetchall()
-                if rows[0] > 1:
-                    Sql = 'Update btc_price_statistics Set LastPriceUSD = "%s",DailyChange = "%s",DailyChangePercent = "%s",DaysLow = "%s",DaysHigh = "%s",DaysVolume = "%s",CDate = "%s" where Data(CDate) = Data(Now())' % (
-                        LastPriceUSD, DailyChange, DailyChangePercent, DaysLow, DaysHigh, DaysOpen, DaysVolume, CDate)
+                if len(rows)  > 0:
+                    Sql = 'Update btc_price_statistics Set LastPriceUSD = "%s",DailyChange = "%s",DailyChangePercent = "%s",DaysLow = "%s",DaysHigh = "%s",DaysVolume = "%s",CDate = "%s" where Date(CDate) = Date(Now())' % (
+                        LastPriceUSD, DailyChange, DailyChangePercent, DaysLow, DaysHigh, DaysVolume, CDate)
                 else:
                     Sql = 'Insert into btc_price_statistics(Id,LastPriceUSD,DailyChange,DailyChangePercent,DaysLow,DaysHigh,DaysOpen,DaysVolume,CDate) values(replace(UUID(), "-", ""),"%s","%s","%s","%s","%s","%s","%s","%s")' % (
                           LastPriceUSD, DailyChange, DailyChangePercent, DaysLow, DaysHigh,DaysOpen,DaysVolume,CDate)
