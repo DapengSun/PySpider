@@ -53,5 +53,5 @@ class btc_Price:
         except Exception, ex:
             print ex
 
-_btc_Price = btc_Price()
-_btc_Price.GetBTCPrice()
+# _btc_Price = btc_Price()
+# _btc_Price.GetBTCPrice()
