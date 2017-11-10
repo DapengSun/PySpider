@@ -20,7 +20,7 @@ class LocationTrans:
     def __init__(self):
         self.cursor = db.cursor()
         self.Updatecursor = db.cursor()
-        self.GaodeAK = "511bf67f91aeb45bd8ba1f1062861b4d"
+        self.GaodeAK = "bfe5ebf03b4befba2a060cd90ca4c4a6"
         self.GetUrl = "http://restapi.amap.com/v3/geocode/geo?key=%s&address=%s&output=json"
 
     def GetLocations(self):
