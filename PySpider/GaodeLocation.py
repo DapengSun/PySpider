@@ -20,12 +20,12 @@ class LocationTrans:
     def __init__(self):
         self.cursor = db.cursor()
         self.Updatecursor = db.cursor()
-        self.GaodeAK = "bfe5ebf03b4befba2a060cd90ca4c4a6"
+        self.GaodeAK = "511bf67f91aeb45bd8ba1f1062861b4d"
         self.GetUrl = "http://restapi.amap.com/v3/geocode/geo?key=%s&address=%s&output=json"
 
     def GetLocations(self):
         try:
-            GetDataSql = 'Select ID,Name from companyinfoes where Lng is null or lat is null'
+            GetDataSql = 'Select ID,Address from companyinfoes where Lng is null or lat is null limit 1000'
             self.cursor.execute(GetDataSql)
             Data = self.cursor.fetchall()
 
@@ -41,9 +41,11 @@ class LocationTrans:
                 LocationString = json.loads(pageCode)
 
                 if str(item[1]).strip().find(" ") > 0:
+                    self.RecordResult(0,0,item[0])
                     continue
 
                 if int(LocationString['status']) != 1:
+                    self.RecordResult(0, 0, item[0])
                     continue
 
                 if len(LocationString['geocodes']) > 0 :
@@ -57,18 +59,10 @@ class LocationTrans:
                     Location_Lat_Regex = re.compile(r'(?<=,)[\S\s]*')
                     LocationLat = re.search(Location_Lat_Regex, str(Location)).group()
 
-                    # 修改时间
-                    UpdateDate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+                    self.RecordResult(LocationLng, LocationLat,item[0])
 
-                    print "Id : %s,Start : %s" % (item[0],time.ctime())
-                    # 修改经度、纬度
-                    UpdateLocSql = 'Update companyinfoes set Lng = %f ,lat = %f where ID = "%s"' % (
-                    float(LocationLng), float(LocationLat), item[0])
-                    self.Updatecursor.execute(UpdateLocSql)
-                    db.commit()
-                    print "Id : %s,End : %s" % (item[0],time.ctime())
                     # 间隔2s
-                    time.sleep(2)
+                    # time.sleep(2)
 
             self.Updatecursor.close()
             self.cursor.close()
@@ -76,6 +70,14 @@ class LocationTrans:
         except Exception, ex:
             print ex
 
+    def RecordResult(self,LocationLng,LocationLat,ID):
+        print "Id : %s,Start : %s" % (ID, time.ctime())
+        # 修改经度、纬度
+        UpdateLocSql = 'Update companyinfoes set Lng = %f ,lat = %f where ID = "%s"' % (
+            float(LocationLng), float(LocationLat), ID)
+        self.Updatecursor.execute(UpdateLocSql)
+        db.commit()
+        print "Id : %s,End : %s" % (ID, time.ctime())
 
 _locationTrans = LocationTrans()
 _locationTrans.GetLocations()
