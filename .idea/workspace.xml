@@ -10,7 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1510133707342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PySpider/爬虫-豆瓣电影" />
+    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1510277817703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PySpider" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -18,12 +18,43 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DoubanMovieCommentAnalysis.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py">
+      <file leaf-file-name="SinaWeatherForecastSpider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="96" column="54" lean-forward="true" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
-              <folding />
+            <state relative-caret-position="665">
+              <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+              <folding>
+                <element signature="e#14#23#0" expanded="true" />
+                <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GaodeLocation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+              <folding>
+                <marker date="1510280374489" expanded="true" signature="808:874" ph="Select ID,Na... companyinfoes" />
+                <marker date="1510280374489" expanded="true" signature="2347:2402" ph="Update compa... " />
+                <marker date="1510280374489" expanded="true" signature="2347:2403" ph="Update compa... " />
+                <marker date="1510280374489" expanded="true" signature="2347:2406" ph="Update compa... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationTrans.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+              <folding>
+                <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
+                <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,11 +92,12 @@
         <option value="$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-高匿IP地址/IpSpider.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-链家二手房/HouseInfoSpider.py" />
-        <option value="$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-BTC比特币/BTCSpider_Statistics.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-BTC比特币/BTCSpider.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-BTC比特币/BTCAutoTask.py" />
         <option value="$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py" />
+        <option value="$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py" />
+        <option value="$PROJECT_DIR$/PySpider/GaodeLocation.py" />
       </list>
     </option>
   </component>
@@ -78,7 +110,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1456" />
+    <option name="width" value="1444" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectView">
@@ -96,7 +128,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -127,17 +159,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="爬虫-豆瓣电影" />
+              <option name="myItemId" value="爬虫-链家二手房" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PySpider/GaodeLocation.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -370,13 +402,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Python27\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PySpider/爬虫-豆瓣电影" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PySpider" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PySpider" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PySpider/GaodeLocation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -399,10 +431,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1444" height="876" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20630373" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21893063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35849056" sideWeight="0.5057307" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -412,7 +444,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37061995" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3962264" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -433,23 +465,78 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
-          <line>99</line>
-          <option name="timeStamp" value="486" />
+          <line>95</line>
+          <option name="timeStamp" value="491" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="487" />
+          <line>94</line>
+          <option name="timeStamp" value="492" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
-          <line>117</line>
-          <option name="timeStamp" value="488" />
+          <line>91</line>
+          <option name="timeStamp" value="493" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
-          <line>121</line>
-          <option name="timeStamp" value="489" />
+          <line>90</line>
+          <option name="timeStamp" value="494" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="496" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="498" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="500" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="501" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="505" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="506" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="507" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>71</line>
+          <option name="timeStamp" value="512" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="513" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="514" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -459,15 +546,69 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="490" />
+      <option name="time" value="612" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="words_df" />
+        <watch expression="LocationString.__len__()" />
+        <watch expression="int(LocationString['status']) == 1" language="Python" />
+        <watch expression="str(item[1]).strip().find(&quot; &quot;)" language="Python" />
+        <watch expression="str(item[1]).strip()" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="85" lean-forward="true" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+            <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510280374489" expanded="true" signature="808:874" ph="Select ID,Na... companyinfoes" />
+            <marker date="1510280374489" expanded="true" signature="2347:2402" ph="Update compa... " />
+            <marker date="1510280374489" expanded="true" signature="2347:2403" ph="Update compa... " />
+            <marker date="1510280374489" expanded="true" signature="2347:2406" ph="Update compa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
+            <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2318">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1824">
+          <caret line="96" column="54" lean-forward="true" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -640,20 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/HouseInfoSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -686,28 +813,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-            <marker date="1503986345660" expanded="true" signature="8078:8417" ph="Insert into douban_filmreview... " />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <marker date="1502082526055" expanded="true" signature="4677:4991" ph="Insert into douban_toprankfilm... " />
-          </folding>
+        <state relative-caret-position="-76">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-豆瓣电影/DoubanMovieCommentAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="96" column="54" lean-forward="true" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+        <state relative-caret-position="353">
+          <caret line="115" column="41" lean-forward="true" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+            <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding>
+            <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
+            <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+          <folding>
+            <marker date="1510280374489" expanded="true" signature="808:874" ph="Select ID,Na... companyinfoes" />
+            <marker date="1510280374489" expanded="true" signature="2347:2402" ph="Update compa... " />
+            <marker date="1510280374489" expanded="true" signature="2347:2403" ph="Update compa... " />
+            <marker date="1510280374489" expanded="true" signature="2347:2406" ph="Update compa... " />
+          </folding>
         </state>
       </provider>
     </entry>

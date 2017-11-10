@@ -75,6 +75,7 @@ def main():
     comments = ''
     for k in range(len(commentList)):
         comments = comments + (str(commentList[k])).strip()
+    print comments
 
     # 使用正则表达式去除标点符号
     pattern = re.compile(r'[\u4e00-\u9fa5]+')
@@ -84,15 +85,16 @@ def main():
     # 使用结巴分词进行中文分词
     segment = jieba.lcut(cleaned_comments)
     words_df = pd.DataFrame({'segment': segment})
+    print words_df
 
     # 去掉停用词
-    stopwords = pd.read_csv("stopwords.txt", index_col=False, quoting=3, sep="\t", names=['stopword'],encoding='gbk')  # quoting=3全不引用
+    stopwords = pd.read_csv("stopwords.txt", index_col=False, quoting=3, sep="\t", names=['stopword'],encoding='gb2312')  # quoting=3全不引用
     words_df = words_df[~words_df.segment.isin(stopwords.stopword)]
 
     # 统计词频
     words_stat = words_df.groupby(by=['segment'])['segment'].agg({"计数": numpy.size})
     words_stat = words_stat.reset_index().sort_values(by=["计数"], ascending=False)
-    #  print(words_stat.head())
+    print(words_stat.head())
 
     bg_pic = numpy.array(Image.open("alice_mask.png"))
 

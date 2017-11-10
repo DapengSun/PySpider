@@ -20,7 +20,7 @@ class LocationTrans:
         self.Updatecursor = db.cursor()
         self.baiduAK = "XKdYj5FvGtXml1pkDmng5yhOssnteFWe"
         self.GetUrl = "http://api.map.baidu.com/geocoder/v2/?output=json&ak=%s&address=%s"
-
+		
     def GetLocations(self,Date):
         try:
             GetHouseSql = 'Select ID,HouseName from Houseinfo where Date(CDate) = "%s"' % str(Date)
@@ -30,7 +30,7 @@ class LocationTrans:
 
 
             for item in HouseInfo:
-                GetLocationUrl = self.GetUrl % (self.baiduAK,str(item[1]))
+                GetLocationUrl = self.GetUrl % (self.GaoDeAK,str(item[1]))
                 request = urllib2.Request(GetLocationUrl)
                 response = urllib2.urlopen(request)
                 pageCode = response.read().decode('utf-8')
