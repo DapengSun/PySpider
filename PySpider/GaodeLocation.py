@@ -25,13 +25,14 @@ class LocationTrans:
 
     def GetLocations(self):
         try:
-            GetDataSql = 'Select ID,Address from companyinfoes where Lng is null or lat is null limit 1000'
+            GetDataSql = 'Select ID,Address from companyinfoes where Lng is null or lat is null ORDER BY _id limit 1000'
             self.cursor.execute(GetDataSql)
             Data = self.cursor.fetchall()
 
             for item in Data:
-                # 名字中跳过带空格
-                if str(item[1]).strip().find(" ") > 0:
+                # 名字中跳过带空格 换行\r\n
+                if str(item[1]).strip().find(" ") > 0 or str(item[1]).strip().find("\r") > 0 or str(item[1]).strip().find("\n") > 0:
+                    self.RecordResult(0,0,item[0])
                     continue
 
                 GetLocationUrl = self.GetUrl % (self.GaodeAK, str(item[1]).strip())
@@ -63,6 +64,10 @@ class LocationTrans:
 
                     # 间隔2s
                     # time.sleep(2)
+
+                else:
+                    self.RecordResult(0, 0, item[0])
+                    continue
 
             self.Updatecursor.close()
             self.cursor.close()

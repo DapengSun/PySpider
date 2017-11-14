@@ -10,7 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1510286721776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PySpider" />
+    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1510625320259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PySpider" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -18,28 +18,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SinaWeatherForecastSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
-              <folding>
-                <element signature="e#14#23#0" expanded="true" />
-                <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GaodeLocation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="189">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <marker date="1510286564353" expanded="true" signature="808:877" ph="Select ID,Na... companyinfoes" />
-                <marker date="1510286564353" expanded="true" signature="808:888" ph="Select ID,Ad... companyinfoes" />
-                <marker date="1510286564353" expanded="true" signature="2645:2704" ph="Update compa... " />
+                <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+                <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+                <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+                <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
               </folding>
             </state>
           </provider>
@@ -114,7 +102,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -151,6 +138,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -420,7 +408,7 @@
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21991403" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22851002" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35849056" sideWeight="0.5057307" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -524,6 +512,21 @@
           <line>76</line>
           <option name="timeStamp" value="514" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/GaodeLocation.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="652" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/GaodeLocation.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="653" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PySpider/GaodeLocation.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="654" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -532,7 +535,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="615" />
+      <option name="time" value="655" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -540,10 +543,71 @@
         <watch expression="int(LocationString['status']) == 1" language="Python" />
         <watch expression="str(item[1]).strip().find(&quot; &quot;)" language="Python" />
         <watch expression="str(item[1]).strip()" language="Python" />
+        <watch expression="LocationString['geocodes']" language="Python" />
+        <watch expression="len(LocationString['geocodes']) &gt; 0" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+            <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+            <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="43" column="54" lean-forward="true" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+          <folding>
+            <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+            <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+            <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+            <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
@@ -560,9 +624,10 @@
         <state relative-caret-position="1216">
           <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
           <folding>
-            <marker date="1510286564353" expanded="true" signature="808:877" ph="Select ID,Na... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="808:888" ph="Select ID,Ad... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="2645:2704" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+            <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
           </folding>
         </state>
       </provider>
@@ -571,10 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding>
-            <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
-            <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,9 +655,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510286564353" expanded="true" signature="808:877" ph="Select ID,Na... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="808:888" ph="Select ID,Ad... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="2645:2704" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+            <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
           </folding>
         </state>
       </provider>
@@ -605,10 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding>
-            <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
-            <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -850,10 +908,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/爬虫-新浪天气/SinaWeatherForecastSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="39" column="85" lean-forward="false" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="93" />
+        <state relative-caret-position="456">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="e#14#23#0" expanded="true" />
             <marker date="1503560538091" expanded="true" signature="6511:6866" ph="Insert into weatherforecastdata... " />
@@ -861,25 +926,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PySpider/爬虫-链家二手房/LocationTrans.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding>
-            <marker date="1510216761760" expanded="true" signature="801:860" ph="Select ID,Ho... Houseinfo" />
-            <marker date="1510216761760" expanded="true" signature="1752:1849" ph="Update House... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PySpider/GaodeLocation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="189">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <marker date="1510286564353" expanded="true" signature="808:877" ph="Select ID,Na... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="808:888" ph="Select ID,Ad... companyinfoes" />
-            <marker date="1510286564353" expanded="true" signature="2645:2704" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="808:901" ph="Select ID,Ad... companyinfoes" />
+            <marker date="1510625155403" expanded="true" signature="2860:2915" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2918" ph="Update compa... " />
+            <marker date="1510625155403" expanded="true" signature="2860:2919" ph="Update compa... " />
           </folding>
         </state>
       </provider>
