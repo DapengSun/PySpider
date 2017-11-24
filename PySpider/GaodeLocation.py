@@ -22,7 +22,7 @@ class LocationTrans:
     def __init__(self):
         self.cursor = db.cursor()
         self.recordcursor = Recorddb.cursor()
-        self.TransNum = 5000
+        self.TransNum = 226
         # self.GaodeAK = "bfe5ebf03b4befba2a060cd90ca4c4a6"
         # self.GaodeAK = "511bf67f91aeb45bd8ba1f1062861b4d"
         # self.GaodeAK = "84beb2508d80d838c08b8d852f8d295d"
@@ -30,7 +30,7 @@ class LocationTrans:
         # self.GaodeAK = "fb8c675b3b467f16e72e0675d91f5c7e"
         # self.GaodeAK = "ead865a77b035d32ed1bf175fe2c8844"
         # self.GaodeAK = "4d2a29bc41057af9a25b5dc642ce989b"
-        # self.GaodeAK = "054898a4850a16393c5500c136891de2"
+        self.GaodeAK = "054898a4850a16393c5500c136891de2"
         # self.GaodeAK = "127c22d33d2d220b7cc78e1dea33fbbd"
         # self.GaodeAK = "0be589f98b56fe8e83d917fa3136cd1d"
         # self.GaodeAK = "da002d3e42a6a2557f9592364a724338"
@@ -41,7 +41,7 @@ class LocationTrans:
         # self.GaodeAK = "cc12ee3cdc407588cf75cd0d4a31d745"
         # self.GaodeAK = "9ac478dc2ebf81aba03e388d3dda037b"
         # self.GaodeAK = "e53c2f3359745f80849f9f71e3812528"
-        self.GaodeAK = "a68bd488c37208e625887d26d06246b7"
+        # self.GaodeAK = "a68bd488c37208e625887d26d06246b7"
         # self.GaodeAK = "9b102ae4ce94d24dfb3c7569fe8988cf"
 
         self.GetUrl = "http://restapi.amap.com/v3/geocode/geo?key=%s&address=%s&output=json"
@@ -58,31 +58,34 @@ class LocationTrans:
                 Data = self.cursor.fetchall()
 
                 for item in Data:
+                    Name = str(item[1]).strip().replace(" ","%20")
+                    Address = str(item[2]).strip().replace(" ", "%20")
+
                     # 企业名称中跳过带空格 则跳过 换行\r\n
-                    if str(item[1]).strip().find(" ") > 0 or str(item[1]).strip().find("\r") > 0 or str(item[1]).strip().find("\n") > 0 or str(item[1]).strip() == "" or str(item[1]).strip() == "NULL" or str(item[1]).strip() == "null":
+                    if Name.strip().find("\r") > 0 or Name.strip().find("\n") > 0 or Name.strip() == "" or Name.strip() == "NULL" or Name.strip() == "null":
                         # 地址中跳过带空格 则无法定位 返回0,0 换行\r\n
-                        if str(item[2]).strip().find(" ") > 0 or str(item[2]).strip().find("\r") > 0 or str(item[2]).strip().find("\n") > 0 or str(item[2]).strip() == "" or str(item[2]).strip() == "NULL" or str(item[2]).strip() == "null":
+                        if Address.strip().find("\r") > 0 or Address.strip().find("\n") > 0 or Address.strip() == "" or Address.strip() == "NULL" or Address.strip() == "null":
                             self.RecordResult(0, 0, item[0])
                             continue
 
                         # 地址正常 不包含空格 换行等符号
                         else:
-                            LocationString = self.GetGeocoding(str(item[2]).strip())
+                            LocationString = self.GetGeocoding(Address)
 
                     # 企业名称正常 不包含空格 换行等符号
                     else:
                         # 企业名称获取经纬度
-                        LocationString = self.GetGeocoding(str(item[1]).strip())
+                        LocationString = self.GetGeocoding(Name)
 
                         # 企业名称未获取到经纬度 切换成地址再次请求
                         if int(LocationString['status']) == 0 or len(LocationString['geocodes']) == 0:
                             # 地址中跳过带空格 则无法定位 返回0,0 换行\r\n
-                            if str(item[2]).strip().find(" ") > 0 or str(item[2]).strip().find("\r") > 0 or str(item[2]).strip().find("\n") > 0 or str(item[2]).strip() == "" or str(item[2]).strip() == "NULL" or str(item[2]).strip() == "null":
+                            if Address.strip().find(" ") > 0 or Address.strip().find("\r") > 0 or Address.strip().find("\n") > 0 or Address.strip() == "" or Address.strip() == "NULL" or Address.strip() == "null":
                                 self.RecordResult(0, 0, item[0])
                                 continue
 
                             # 地址获取经纬度
-                            LocationString = self.GetGeocoding(str(item[2]).strip());
+                            LocationString = self.GetGeocoding(Address);
 
                             # 地址未获取到经纬度 返回0,0
                             if int(LocationString['status']) == 0 or len(LocationString['geocodes']) == 0:
@@ -136,15 +139,7 @@ class LocationTrans:
 
     # 转换是否结束
     def IsFinishTrans(self,EndRecordNum):
-        GetSql = 'select EndRecordNum from tranrecord ORDER BY CDate DESC limit 1'
-        self.recordcursor.execute(GetSql)
-        Data = self.recordcursor.fetchall()
-        EndRecordNum = 1
-        for item in Data:
-            EndRecordNum = item[0]
-            break
-
-        if EndRecordNum - self.TransNum >= 0:
+        if EndRecordNum >= 0:
             return True
         else:
             return False
