@@ -59,12 +59,13 @@ class ErShouFangSpider():
                     'Accept-Language': 'zh-CN,zh;q=0.9'
                 }
 
-        for i in range(2,3):
+        for i in range(1,101):
             _erShoufangUrl = '%s/pg%s/' % (_baseUrl,i)
-            # print(_pgNum)
             self.getPageHtml(_erShoufangUrl,_header)
-            self.cursor.close()
-            self.db.close()
+            time.sleep(20)
+
+        self.cursor.close()
+        self.db.close()
 
 
     def getPageHtml(self,url,header):
