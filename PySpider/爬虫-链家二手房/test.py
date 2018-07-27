@@ -1,37 +1,30 @@
 # -*- coding: utf-8 -*-
-import urllib2
-from multiprocessing.dummy import Pool as ThreadPool
-import time
-import sys
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
 
-class House:
-    def printParallel(self,Num):
-        print '%s开始获取数据' % str(Num)
-        start = time.time()
-        time.sleep(Num)
-        end = time.time()
-        print '%s获取数据结束' % str(Num)
+def yield_func():
+    Info_list = [{'area': '北京', 'count': 1}, {'area': '上海', 'count': 2}, {'area': '天津', 'count': 3},
+                 {'area': '天津', 'count': 1000}]
 
-    def test(self):
-        urls = []
+    area_list = []
+    for i in Info_list:
+        area_list.append(i['area'])
+    area_index = list(set(area_list))
+    # print(area_index)
 
-        for i in range(0, 10):
-            urls.append(i)
+    area_count = []
+    for i in area_index:
+        area_count.append(area_list.count(i))
 
-        # Make the Pool of workers
-        pool = ThreadPool(4)
-        # Open the urls in their own threads
-        # and return the results
-        try:
-            results = pool.map(self.printParallel, urls)
-            # close the pool and wait for the work to finish
-            pool.close()
-            pool.join()
-        except Exception, ex:
-            print ex
+    # for area,count in zip(area_index,area_count):
+        # print(area,count)
+        # data = {
+        #     'area':area,
+        #     'count':[count]
+        # }
 
-if __name__ == "__main__":
-    house=House()
-    house.test()
+    for i in range(1,10):
+        yield i
+
+data = yield_func()
+
+for i in data:
+    print(i)

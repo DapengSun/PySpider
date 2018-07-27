@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1532495900144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/爬虫-链家二手房" />
+    <SUITE FILE_PATH="coverage/PySpider$PySpider.coverage" NAME="PySpider Coverage Results" MODIFIED="1532673005464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/分析-链家房屋信息" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -20,33 +20,33 @@
     <favorites_list name="PySpider" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ErShouFangSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/ErShouFangSpider.py">
+    <leaf>
+      <file leaf-file-name="ErShouFangAnalyze.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/分析-链家房屋信息/ErShouFangAnalyze.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="145" column="53" selection-start-line="145" selection-start-column="53" selection-end-line="145" selection-end-column="53" />
+            <state relative-caret-position="212">
+              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateErShouFangLocationSpider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/UpdateErShouFangLocationSpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-12">
+              <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding>
-                <element signature="e#14#23#0" expanded="true" />
+                <element signature="e#14#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LouPanSpider.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/LouPanSpider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="308" selection-start-line="308" selection-end-line="308" />
             </state>
           </provider>
         </entry>
@@ -85,6 +85,9 @@
         <option value="$PROJECT_DIR$/爬虫-链家二手房/ErShouFangSpider.py" />
         <option value="$PROJECT_DIR$/爬虫-链家二手房/LouPanSpider.py" />
         <option value="$PROJECT_DIR$/爬虫-链家二手房/ToolHelper.py" />
+        <option value="$PROJECT_DIR$/爬虫-链家二手房/test.py" />
+        <option value="$PROJECT_DIR$/爬虫-链家二手房/UpdateErShouFangLocationSpider.py" />
+        <option value="$PROJECT_DIR$/分析-链家房屋信息/ErShouFangAnalyze.py" />
       </list>
     </option>
   </component>
@@ -108,7 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -125,13 +127,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/CAXA/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/requests/api.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/爬虫-链家二手房/LouPanSpider.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/分析-链家房屋信息/ErShouFangAnalyze.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -160,12 +163,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\CAXA\AppData\Local\Programs\Python\Python36-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/爬虫-链家二手房" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/分析-链家房屋信息" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/爬虫-链家二手房/LouPanSpider.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/分析-链家房屋信息/ErShouFangAnalyze.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -252,7 +255,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49636218" weight="0.32920355" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49555376" weight="0.32035398" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.57881975" weight="0.29734513" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18593371" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23201293" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32983023" />
@@ -283,16 +286,36 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="184" />
+      <option name="time" value="217" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="_housePrice.find('div', class_=&quot;second&quot;).text" language="Python" />
+        <watch expression="_soup.find('div',class_='aroundInfo')" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>_soup.find('div',class_='aroundInfo')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>_soup</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>_soup.find('div',class_='aroundInfo').find('div',class_='areaName').find('span',class_='info').find('a')</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>_soup.find('div',class_='aroundInfo').find('div',class_='areaName').find('span',class_='info').find('a').text</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>_housePrice.find('div', class_=&quot;second&quot;).text</expression-string>
         <language-id>Python</language-id>
@@ -320,26 +343,6 @@
       </expression>
       <expression>
         <expression-string>_housePrice</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>_houseInfoTags</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>_houseAreaInfo[9][&quot;href&quot;]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>_houseAreaInfo[9]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>_houseAreaInfo[9].text</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -581,16 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/ErShouFangSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="145" column="53" selection-start-line="145" selection-start-column="53" selection-end-line="145" selection-end-column="53" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/ToolHelper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -600,8 +593,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/LouPanSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+        <state relative-caret-position="1680">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/bs4/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="134" column="36" lean-forward="true" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/ErShouFangSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="72" column="80" selection-start-line="72" selection-start-column="59" selection-end-line="72" selection-end-column="80" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/UpdateErShouFangLocationSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <element signature="e#14#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/爬虫-链家二手房/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/分析-链家房屋信息/ErShouFangAnalyze.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
         </state>
       </provider>
     </entry>
