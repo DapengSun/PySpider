@@ -21,25 +21,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LianJiaSpiderJob.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LianJiaSpiderJob.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderJob.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="40" />
+              <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
               <folding>
                 <element signature="e#15#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ErShouFangSearchSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-              <folding>
-                <element signature="e#14#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,26 +36,17 @@
       <file leaf-file-name="LianJiaSpiderQueue.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderQueue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state relative-caret-position="75">
+              <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestOutQueue.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Redis/TestOutQueue.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisOperHelper.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RedisOperHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Redis/RedisOperHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+            <state relative-caret-position="375">
+              <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="13" />
               <folding>
                 <element signature="e#15#27#0" expanded="true" />
               </folding>
@@ -95,6 +74,7 @@
       <find>ErShouFangInfoModel</find>
       <find>HouseUnitPrice</find>
       <find>saveHouseInfo</find>
+      <find>Hkeys</find>
       <find>RedisQueueHelper</find>
     </findStrings>
     <replaceStrings>
@@ -123,11 +103,11 @@
         <option value="$PROJECT_DIR$/LianJiaSpider/__init__.py" />
         <option value="$PROJECT_DIR$/LianJiaJob/EnumType.py" />
         <option value="$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py" />
-        <option value="$PROJECT_DIR$/LianJiaJob/LianJiaSpiderJob.py" />
         <option value="$PROJECT_DIR$/Redis/RedisQueueHelper.py" />
         <option value="$PROJECT_DIR$/LianJiaJob/LianJiaSpiderQueue.py" />
         <option value="$PROJECT_DIR$/Redis/TestOutQueue.py" />
         <option value="$PROJECT_DIR$/Redis/RedisOperHelper.py" />
+        <option value="$PROJECT_DIR$/LianJiaJob/LianJiaSpiderJob.py" />
       </list>
     </option>
   </component>
@@ -310,7 +290,7 @@
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32983023" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.31327432" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31327432" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -355,26 +335,6 @@
           <line>13</line>
           <option name="timeStamp" value="287" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py</url>
-          <line>81</line>
-          <option name="timeStamp" value="292" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py</url>
-          <line>83</line>
-          <option name="timeStamp" value="293" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="294" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="295" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -383,7 +343,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="296" />
+      <option name="time" value="297" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -695,16 +655,6 @@
     <entry file="file://$PROJECT_DIR$/LianJiaSpider/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-          <folding>
-            <element signature="e#14#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LianJiaJob/EnumType.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -729,23 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderQueue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderJob.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Redis/TestOutQueue.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -753,12 +686,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LianJiaSpider/ErShouFangSearchSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="47" />
+          <folding>
+            <element signature="e#14#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Redis/RedisOperHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+        <state relative-caret-position="375">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="13" />
           <folding>
             <element signature="e#15#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderQueue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LianJiaJob/LianJiaSpiderJob.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#15#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

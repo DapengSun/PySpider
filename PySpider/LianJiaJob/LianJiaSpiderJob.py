@@ -1,15 +1,15 @@
 # coding:utf-8
 import sys
-from Redis.RedisQueueHelper import RedisQueueHelper
+from Redis.RedisOperHelper import RedisOperHelper
 from LianJiaSpider.ErShouFangSearchSpider import ErShoufangSearchInfo
 
 class LianJiaSpiderJob(object):
     def __init__(self):
-        self.queuename = 'lianjia'
+        self.queuename = 'JobQueue:lianjia'
 
     def getspiderjob(self):
-         _redisHelper = RedisQueueHelper(self.queuename)
-         _spiderJobUrl = _redisHelper.get_nowait()
+         _redisHelper = RedisOperHelper()
+         _spiderJobUrl = _redisHelper.queueGetNowait(self.queuename)
          if _spiderJobUrl != None:
              _searchInfo = ErShoufangSearchInfo(_spiderJobUrl)
              _searchInfo.getHouseInfo()
