@@ -10,8 +10,9 @@ class LianJiaSpiderJob(object):
     def getspiderjob(self):
          _redisHelper = RedisQueueHelper(self.queuename)
          _spiderJobUrl = _redisHelper.get_nowait()
-         _searchInfo = ErShoufangSearchInfo(_spiderJobUrl)
-         _searchInfo.getHouseInfo()
+         if _spiderJobUrl != None:
+             _searchInfo = ErShoufangSearchInfo(_spiderJobUrl)
+             _searchInfo.getHouseInfo()
 
 _spiderJob = LianJiaSpiderJob()
 _spiderJob.getspiderjob()

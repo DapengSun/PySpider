@@ -4,6 +4,7 @@ import requests
 import pymysql
 import datetime
 import time
+import random
 from  decimal import Decimal
 from bs4 import BeautifulSoup
 from LianJiaJob.EnumType import SpiderJobStatus
@@ -63,6 +64,7 @@ class ErShoufangSearchInfo():
                 }
 
         for i in range(1,2):
+            time.sleep(random.randint(1,5))
             self.getPageHtml(self.searchurl,_header)
             time.sleep(5)
 

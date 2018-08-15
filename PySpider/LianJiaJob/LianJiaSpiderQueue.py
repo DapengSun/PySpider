@@ -1,15 +1,15 @@
 # coding:utf-8
-from Redis.RedisQueueHelper import RedisQueueHelper
+from Redis.RedisOperHelper import RedisOperHelper
 
 class LianJiaSpiderQueue(object):
     def __init__(self,spiderurl):
-        self.queuename = 'lianjia'
+        self.queuename = 'JobQueue:lianjia'
         # 待爬的网页链接
         self.spiderurl = spiderurl
 
     def pushjobqueue(self):
-        _redisQueue = RedisQueueHelper(self.queuename)
-        _redisQueue.put(self.spiderurl)
+        _redisOper = RedisOperHelper()
+        _redisOper.queuePut(self.queuename,self.spiderurl)
 
-_spiderJob = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs香河/')
+_spiderJob = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs香河2/')
 _spiderJob.pushjobqueue()
