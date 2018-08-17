@@ -8,7 +8,11 @@ class RedisOperHelper(object):
         pool = redis.ConnectionPool(host='localhost', port=6379, decode_responses=True)
         self.db = redis.Redis(connection_pool=pool)
 
-    # list操作
+    # 获取所有执行的key值
+    def keys(self,pattern):
+        return self.db.keys(pattern)
+
+    # List操作
     # 返回队列里面list内元素的数量
     def queueSize(self,key):
         return self.db.llen(key)

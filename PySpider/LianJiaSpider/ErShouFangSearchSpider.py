@@ -8,6 +8,8 @@ import random
 from  decimal import Decimal
 from bs4 import BeautifulSoup
 from LianJiaJob.EnumType import SpiderJobStatus
+from Redis.RedisOperHelper import RedisOperHelper
+
 
 class SearchInfoModel():
     def __init__(self,SearchId,HouseInfoUrl,HouseInfoCode,SurfacePlotThumbnail,
@@ -176,7 +178,15 @@ class ErShoufangSearchInfo():
                                                       _houseAddressName,_housePattern,_houseSize,_houseOrientation,_houseCover,_houseElevator,
                                                       _houseFloor,_houseYear,_houseArea,_housePeoperNum,_houseLookNum,_houseFollowSubway,_houseTaxFree,
                                                       _houseHasKey,_houseTotalPrice,_houseUnitPrice)
-                self.saveHouseInfo(_searchInfoModel)
+
+                # 将爬取类转换成Dict
+                _searchDict = dict((name,getattr(_searchInfoModel,name)) for name in dir(_searchInfoModel) if not name.startswith('__'))
+
+                # 将爬取的数据暂存入Redis数据库 key格式为：查询ID + _ + name（二手房编码）
+                _redisOper = RedisOperHelper()
+                _redisOper.hashHmset(('%s_%s') % (_searchId,_houseInfoCode),_searchDict)
+
+                # self.saveHouseInfo(_searchInfoModel)
 
             _updateSearchSql = "Update searchinfo Set Status = %d Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
             self.cursor.execute(_updateSearchSql)
