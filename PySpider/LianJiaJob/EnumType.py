@@ -7,3 +7,4 @@ class SpiderJobStatus(Enum):
     待启动 = 0
     启动中 = 1
     已完成 = 2
+    结果入库 = 3

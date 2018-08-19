@@ -1,4 +1,5 @@
 #coding:utf-8
+import json
 import re
 import requests
 import pymysql
@@ -50,6 +51,7 @@ class ErShoufangSearchInfo():
             self.db = pymysql.connect(host="localhost",user="root",password="sdmp",db="spider",port=3306)
             self.cursor = self.db.cursor()
             self.searchurl = searchurl
+            self.jobList = 'JobList'
         except Exception as e:
             print(e)
 
@@ -70,8 +72,8 @@ class ErShoufangSearchInfo():
             self.getPageHtml(self.searchurl,_header)
             time.sleep(5)
 
-        self.cursor.close()
-        self.db.close()
+        # self.cursor.close()
+        # self.db.close()
 
 
     def getPageHtml(self,url,header):
@@ -84,7 +86,9 @@ class ErShoufangSearchInfo():
             _searchId = ('s_result_%s') % _searchDate
 
             print(type(SpiderJobStatus.待启动))
-            # 状态位 0-待启动 1-启动中 2-已完成 -1-异常
+            _redisOper = RedisOperHelper()
+
+            # 状态位 0-待启动 1-启动中 2-已完成 3-结果入库 -1-异常
             _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate) VALUES('%s','%s','%d','%s')" % (_searchId, url,SpiderJobStatus.待启动.value,_searchDate)
             self.cursor.execute(_createSearchSql)
             self.db.commit()
@@ -92,6 +96,13 @@ class ErShoufangSearchInfo():
             _updateSearchSql = "Update searchinfo Set Status = %d Where SearchId = '%s'" % (SpiderJobStatus.启动中.value,_searchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
+
+            # _now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+            # _JobDetailInfo = {
+            #     'JobStatus' : SpiderJobStatus.启动中.value,
+            #     'SpiderDate': _now
+            # }
+            # _redisOper.hashHset(self.jobList,_searchId,json.dumps(_JobDetailInfo))
 
             # 获取二手房简介信息
             for houseInfo in _houseInfoList:
@@ -183,17 +194,16 @@ class ErShoufangSearchInfo():
                 _searchDict = dict((name,getattr(_searchInfoModel,name)) for name in dir(_searchInfoModel) if not name.startswith('__'))
 
                 # 将爬取的数据暂存入Redis数据库 key格式为：查询ID + _ + name（二手房编码）
-                _redisOper = RedisOperHelper()
                 _redisOper.hashHmset(('%s_%s') % (_searchId,_houseInfoCode),_searchDict)
 
                 # self.saveHouseInfo(_searchInfoModel)
 
-            _updateSearchSql = "Update searchinfo Set Status = %d Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
+            _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
         except Exception as e:
             print(e)
-            _updateSearchSql = "Update searchinfo Set Status = %d Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _searchId)
+            _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _searchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
         finally:
