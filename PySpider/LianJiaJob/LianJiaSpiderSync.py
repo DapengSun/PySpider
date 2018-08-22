@@ -18,7 +18,7 @@ class LianJiaSpiderSync:
     # 保存任务结果
     def saveJobResult(self):
         try:
-            _sql = "Select * from Searchinfo where Status = '%s'" % (SpiderJobStatus.已完成.value)
+            _sql = "Select * from searchinfo where Status = '%s'" % (SpiderJobStatus.已完成.value)
 
             self.cursor.execute(_sql)
             _result = self.cursor.fetchall()
@@ -48,7 +48,7 @@ class LianJiaSpiderSync:
 
                     self.saveHouseInfo(_searchInfoModel)
 
-                _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.结果入库.value, _currentSearchId)
+                _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.结果入库.value, _currentSearchId)
                 self.cursor.execute(_updateSearchSql)
                 self.db.commit()
 
@@ -57,7 +57,7 @@ class LianJiaSpiderSync:
 
         except Exception as ex:
             print(ex)
-            _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _currentSearchId)
+            _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _currentSearchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
         finally:

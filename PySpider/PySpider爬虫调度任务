@@ -1,0 +1,2 @@
+*/5 * * * * /Users/wangyiran/Desktop/PySpiderVenv/bin/python3.6 /Users/wangyiran/Desktop/PySpider/PySpider/StartLianJiaSpiderJob.py
+*/2 * * * * /Users/wangyiran/Desktop/PySpiderVenv/bin/python3.6 /Users/wangyiran/Desktop/PySpider/PySpider/StartLianJiaSpiderSync.py
