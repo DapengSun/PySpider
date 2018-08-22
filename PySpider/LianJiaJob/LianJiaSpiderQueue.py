@@ -11,5 +11,5 @@ class LianJiaSpiderQueue(object):
         _redisOper = RedisOperHelper()
         _redisOper.queuePut(self.queuename,self.spiderurl)
 
-_spiderJob = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs香河/')
+_spiderJob = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs测试/')
 _spiderJob.pushjobqueue()

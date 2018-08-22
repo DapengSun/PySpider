@@ -80,123 +80,113 @@ class ErShoufangSearchInfo():
         try:
             _htmlDoc = requests.get(url,header)
             _soup = BeautifulSoup(_htmlDoc.text,'html.parser', from_encoding='utf-8')
-            _houseInfoList = _soup.find('ul',class_="sellListContent").find_all('li',class_="clear LOGCLICKDATA")
-
             _searchDate = time.strftime('%Y%m%d%H%M%S', time.localtime())
             _searchId = ('s_result_%s') % _searchDate
 
-            print(type(SpiderJobStatus.待启动))
-            _redisOper = RedisOperHelper()
-
             # 状态位 0-待启动 1-启动中 2-已完成 3-结果入库 -1-异常
-            _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate) VALUES('%s','%s','%d','%s')" % (_searchId, url,SpiderJobStatus.待启动.value,_searchDate)
+            _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate) VALUES('%s','%s','%d','%s')" % (
+            _searchId, url, SpiderJobStatus.启动中.value, _searchDate)
             self.cursor.execute(_createSearchSql)
             self.db.commit()
 
-            _updateSearchSql = "Update searchinfo Set Status = %d Where SearchId = '%s'" % (SpiderJobStatus.启动中.value,_searchId)
-            self.cursor.execute(_updateSearchSql)
-            self.db.commit()
+            if _soup.find('ul',class_="sellListContent") != None:
+                _houseInfoList = _soup.find('ul',class_="sellListContent").find_all('li',class_="clear LOGCLICKDATA")
 
-            # _now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-            # _JobDetailInfo = {
-            #     'JobStatus' : SpiderJobStatus.启动中.value,
-            #     'SpiderDate': _now
-            # }
-            # _redisOper.hashHset(self.jobList,_searchId,json.dumps(_JobDetailInfo))
+                _redisOper = RedisOperHelper()
 
-            # 获取二手房简介信息
-            for houseInfo in _houseInfoList:
-                # 二手房详情链接
-                _houseInfoUrl = houseInfo.find('a')["href"]
-                # 二手房编码
-                _houseInfoCode = houseInfo.find('a')["data-housecode"]
-                # 二手房封面缩略图
-                _surfacePlotThumbnail = houseInfo.find('a').find('img',class_="lj-lazy")["data-original"]
-                # 二手房名称
-                _houseTitle = houseInfo.find('div',class_="info clear").find('div',class_="title").find('a').text
-                # 二手房tag标识
-                _houseTag = ''
-                if houseInfo.find('div', class_="info clear").find('div', class_="title").find('span') != None:
-                    _houseTag = houseInfo.find('div', class_="info clear").find('div', class_="title").find('span').text
-                # 二手房位置URL
-                _houseAddressUrl = houseInfo.find('div', class_="info clear").find('div', class_="address").find('a')["href"]
-                # 二手房位置名称
-                _houseAddressName = houseInfo.find('div', class_="info clear").find('div', class_="address").find('a').text
+                # 获取二手房简介信息
+                for houseInfo in _houseInfoList:
+                    # 二手房详情链接
+                    _houseInfoUrl = houseInfo.find('a')["href"]
+                    # 二手房编码
+                    _houseInfoCode = houseInfo.find('a')["data-housecode"]
+                    # 二手房封面缩略图
+                    _surfacePlotThumbnail = houseInfo.find('a').find('img',class_="lj-lazy")["data-original"]
+                    # 二手房名称
+                    _houseTitle = houseInfo.find('div',class_="info clear").find('div',class_="title").find('a').text
+                    # 二手房tag标识
+                    _houseTag = ''
+                    if houseInfo.find('div', class_="info clear").find('div', class_="title").find('span') != None:
+                        _houseTag = houseInfo.find('div', class_="info clear").find('div', class_="title").find('span').text
+                    # 二手房位置URL
+                    _houseAddressUrl = houseInfo.find('div', class_="info clear").find('div', class_="address").find('a')["href"]
+                    # 二手房位置名称
+                    _houseAddressName = houseInfo.find('div', class_="info clear").find('div', class_="address").find('a').text
 
-                # 二手房房屋情况列表
-                _houseDetailInfoList = houseInfo.find('div', class_="info clear").find('div', class_="address").find_all('span', class_="divide")
-                # 二手房房屋格局
-                _housePattern = ''
-                if len(_houseDetailInfoList) >= 1:
-                    _housePattern = _houseDetailInfoList[0].next_sibling
-                # 二手房房屋大小
-                _houseSize = ''
-                if len(_houseDetailInfoList) >= 2:
-                    _houseSize = _houseDetailInfoList[1].next_sibling
-                # 二手房房屋朝向
-                _houseOrientation = ''
-                if len(_houseDetailInfoList) >= 3:
-                    _houseOrientation = _houseDetailInfoList[2].next_sibling
-                # 二手房房屋装修情况
-                _houseCover = ''
-                if len(_houseDetailInfoList) >= 4:
-                    _houseCover = _houseDetailInfoList[3].next_sibling
-                # 二手房房屋有无电梯
-                    _houseElevator = ''
-                if len(_houseDetailInfoList) >= 5:
-                    _houseElevator = _houseDetailInfoList[4].next_sibling
+                    # 二手房房屋情况列表
+                    _houseDetailInfoList = houseInfo.find('div', class_="info clear").find('div', class_="address").find_all('span', class_="divide")
+                    # 二手房房屋格局
+                    _housePattern = ''
+                    if len(_houseDetailInfoList) >= 1:
+                        _housePattern = _houseDetailInfoList[0].next_sibling
+                    # 二手房房屋大小
+                    _houseSize = ''
+                    if len(_houseDetailInfoList) >= 2:
+                        _houseSize = _houseDetailInfoList[1].next_sibling
+                    # 二手房房屋朝向
+                    _houseOrientation = ''
+                    if len(_houseDetailInfoList) >= 3:
+                        _houseOrientation = _houseDetailInfoList[2].next_sibling
+                    # 二手房房屋装修情况
+                    _houseCover = ''
+                    if len(_houseDetailInfoList) >= 4:
+                        _houseCover = _houseDetailInfoList[3].next_sibling
+                    # 二手房房屋有无电梯
+                        _houseElevator = ''
+                    if len(_houseDetailInfoList) >= 5:
+                        _houseElevator = _houseDetailInfoList[4].next_sibling
 
-                # 二手房位置情况
-                _housePositionInfo = houseInfo.find('div', class_="info clear").find('div', class_="flood").find_all('div', class_="positionInfo")[0].contents
-                # 二手房楼层
-                _houseFloor = _housePositionInfo[0]
-                # 二手房年代
-                _houseYear = _housePositionInfo[2]
-                # 二手房地区
-                _houseArea = _housePositionInfo[4].text
+                    # 二手房位置情况
+                    _housePositionInfo = houseInfo.find('div', class_="info clear").find('div', class_="flood").find_all('div', class_="positionInfo")[0].contents
+                    # 二手房楼层
+                    _houseFloor = _housePositionInfo[0]
+                    # 二手房年代
+                    _houseYear = _housePositionInfo[2]
+                    # 二手房地区
+                    _houseArea = _housePositionInfo[4].text
 
-                # 二手房关注情况
-                _houseFollow = houseInfo.find('div', class_="info clear").find('div', class_="followInfo")
-                # 二手房关注人数
-                _re = re.compile(r'[\S\s]*?(?=人关注)')
-                _housePeoperNum = re.search(_re, _houseFollow.contents[0]).group()
-                # 二手房带看人数
-                _re = re.compile(r'[\S\s]*?(?=次带看)')
-                _houseLookNum = re.search(_re, _houseFollow.contents[2]).group()
-                # 二手房距离地铁位置
-                _houseFollowSubway = ''
-                if _houseFollow.find('span',class_="subway") != None:
-                    _houseFollowSubway = _houseFollow.find('span',class_="subway").text
-                # 二手房免税
-                _houseTaxFree = ''
-                if _houseFollow.find('span',class_="taxfree") != None:
-                    _houseTaxFree = _houseFollow.find('span',class_="taxfree").text
-                # 二手房是否能随时看房
-                _houseHasKey = ''
-                if _houseFollow.find('span',class_="haskey") != None:
-                    _houseHasKey = _houseFollow.find('span',class_="haskey").text
+                    # 二手房关注情况
+                    _houseFollow = houseInfo.find('div', class_="info clear").find('div', class_="followInfo")
+                    # 二手房关注人数
+                    _re = re.compile(r'[\S\s]*?(?=人关注)')
+                    _housePeoperNum = re.search(_re, _houseFollow.contents[0]).group()
+                    # 二手房带看人数
+                    _re = re.compile(r'[\S\s]*?(?=次带看)')
+                    _houseLookNum = re.search(_re, _houseFollow.contents[2]).group()
+                    # 二手房距离地铁位置
+                    _houseFollowSubway = ''
+                    if _houseFollow.find('span',class_="subway") != None:
+                        _houseFollowSubway = _houseFollow.find('span',class_="subway").text
+                    # 二手房免税
+                    _houseTaxFree = ''
+                    if _houseFollow.find('span',class_="taxfree") != None:
+                        _houseTaxFree = _houseFollow.find('span',class_="taxfree").text
+                    # 二手房是否能随时看房
+                    _houseHasKey = ''
+                    if _houseFollow.find('span',class_="haskey") != None:
+                        _houseHasKey = _houseFollow.find('span',class_="haskey").text
 
-                # 二手房价格情况
-                _housePrice = houseInfo.find('div', class_="info clear").find('div', class_="priceInfo")
-                # 二手房价格
-                _houseTotalPrice = Decimal(_housePrice.find('div', class_="totalPrice").find('span').text)
-                # 二手房单价
-                _houseUnitPriceText = _housePrice.find('div', class_="unitPrice").find('span').text
-                _re = re.compile(r'(?<=单价).*?(?=元/平米)')
-                _houseUnitPrice = Decimal(re.search(_re, _houseUnitPriceText).group())
+                    # 二手房价格情况
+                    _housePrice = houseInfo.find('div', class_="info clear").find('div', class_="priceInfo")
+                    # 二手房价格
+                    _houseTotalPrice = Decimal(_housePrice.find('div', class_="totalPrice").find('span').text)
+                    # 二手房单价
+                    _houseUnitPriceText = _housePrice.find('div', class_="unitPrice").find('span').text
+                    _re = re.compile(r'(?<=单价).*?(?=元/平米)')
+                    _houseUnitPrice = Decimal(re.search(_re, _houseUnitPriceText).group())
 
-                _searchInfoModel= SearchInfoModel(_searchId,_houseInfoUrl,_houseInfoCode,_surfacePlotThumbnail,_houseTitle,_houseTag,_houseAddressUrl,
-                                                      _houseAddressName,_housePattern,_houseSize,_houseOrientation,_houseCover,_houseElevator,
-                                                      _houseFloor,_houseYear,_houseArea,_housePeoperNum,_houseLookNum,_houseFollowSubway,_houseTaxFree,
-                                                      _houseHasKey,_houseTotalPrice,_houseUnitPrice)
+                    _searchInfoModel= SearchInfoModel(_searchId,_houseInfoUrl,_houseInfoCode,_surfacePlotThumbnail,_houseTitle,_houseTag,_houseAddressUrl,
+                                                          _houseAddressName,_housePattern,_houseSize,_houseOrientation,_houseCover,_houseElevator,
+                                                          _houseFloor,_houseYear,_houseArea,_housePeoperNum,_houseLookNum,_houseFollowSubway,_houseTaxFree,
+                                                          _houseHasKey,_houseTotalPrice,_houseUnitPrice)
 
-                # 将爬取类转换成Dict
-                _searchDict = dict((name,getattr(_searchInfoModel,name)) for name in dir(_searchInfoModel) if not name.startswith('__'))
+                    # 将爬取类转换成Dict
+                    _searchDict = dict((name,getattr(_searchInfoModel,name)) for name in dir(_searchInfoModel) if not name.startswith('__'))
 
-                # 将爬取的数据暂存入Redis数据库 key格式为：查询ID + _ + name（二手房编码）
-                _redisOper.hashHmset(('%s_%s') % (_searchId,_houseInfoCode),_searchDict)
+                    # 将爬取的数据暂存入Redis数据库 key格式为：查询ID + _ + name（二手房编码）
+                    _redisOper.hashHmset(('%s_%s') % (_searchId,_houseInfoCode),_searchDict)
 
-                # self.saveHouseInfo(_searchInfoModel)
+                    # self.saveHouseInfo(_searchInfoModel)
 
             _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
             self.cursor.execute(_updateSearchSql)
