@@ -1,5 +1,5 @@
 # coding:utf-8
-from Redis.RedisOperHelper import RedisOperHelper
+from RedisOper.RedisOperHelper import RedisOperHelper
 
 class LianJiaSpiderQueue(object):
     def __init__(self,spiderurl):

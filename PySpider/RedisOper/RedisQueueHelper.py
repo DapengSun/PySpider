@@ -7,7 +7,7 @@ class RedisQueueHelper(object):
     def __init__(self,queuename,namespace="JobQueue"):
         pool = redis.ConnectionPool(host='localhost', port=6379, decode_responses=True)
         self.db = redis.Redis(connection_pool=pool)
-        # self.db = redis.Redis(**redis_param)
+        # self.db = redis.RedisOper(**redis_param)
         self.key = '%s:%s' %(namespace, queuename)
 
     def qsize(self):

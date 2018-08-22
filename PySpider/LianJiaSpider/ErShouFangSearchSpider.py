@@ -9,7 +9,7 @@ import random
 from  decimal import Decimal
 from bs4 import BeautifulSoup
 from LianJiaJob.EnumType import SpiderJobStatus
-from Redis.RedisOperHelper import RedisOperHelper
+from RedisOper.RedisOperHelper import RedisOperHelper
 
 
 class SearchInfoModel():

@@ -12,6 +12,10 @@ class RedisOperHelper(object):
     def keys(self,pattern):
         return self.db.keys(pattern)
 
+    # 删除执行的key
+    def delKeys(self,*names):
+        return self.db.delete(*names)
+
     # List操作
     # 返回队列里面list内元素的数量
     def queueSize(self,key):
@@ -98,5 +102,5 @@ class RedisOperHelper(object):
         return self.db.hvals(name)
 
     # Hdel 命令用于删除哈希表 key 中的一个或多个指定字段，不存在的字段将被忽略。
-    def hashHdel(self,name,key):
-        return self.db.hdel(name,key)
+    def hashHdel(self,name,*key):
+        return self.db.hdel(name,*key)

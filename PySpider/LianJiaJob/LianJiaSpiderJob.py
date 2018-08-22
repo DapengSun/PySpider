@@ -1,6 +1,9 @@
 # coding:utf-8
 import sys
-from Redis.RedisOperHelper import RedisOperHelper
+# sys.path.append("..")
+# sys.path.insert(0, '..')
+from RedisOper.RedisOperHelper import RedisOperHelper
+# from ..RedisOper import RedisOperHelper
 from LianJiaSpider.ErShouFangSearchSpider import ErShoufangSearchInfo
 
 class LianJiaSpiderJob(object):
@@ -14,5 +17,5 @@ class LianJiaSpiderJob(object):
              _searchInfo = ErShoufangSearchInfo(_spiderJobUrl)
              _searchInfo.getHouseInfo()
 
-_spiderJob = LianJiaSpiderJob()
-_spiderJob.getspiderjob()
+# _spiderJob = LianJiaSpiderJob()
+# _spiderJob.getspiderjob()

@@ -4,7 +4,7 @@ import pymysql
 from LianJiaJob.Common import Common
 from LianJiaJob.EnumType import SpiderJobStatus
 from LianJiaSpider.ErShouFangSearchSpider import SearchInfoModel
-from Redis.RedisOperHelper import RedisOperHelper
+from RedisOper.RedisOperHelper import RedisOperHelper
 
 
 class LianJiaSpiderSync:
@@ -51,6 +51,10 @@ class LianJiaSpiderSync:
                 _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.结果入库.value, _currentSearchId)
                 self.cursor.execute(_updateSearchSql)
                 self.db.commit()
+
+                # 删除redis中爬取结果
+                _redisOper.delKeys(*_resultList)
+
         except Exception as ex:
             print(ex)
             _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _currentSearchId)
