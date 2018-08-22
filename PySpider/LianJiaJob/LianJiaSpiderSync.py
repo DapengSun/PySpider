@@ -85,5 +85,5 @@ class LianJiaSpiderSync:
             self.db.rollback()
             raise
 
-t = LianJiaSpiderSync()
-t.saveJobResult()
+# t = LianJiaSpiderSync()
+# t.saveJobResult()
