@@ -188,12 +188,12 @@ class ErShoufangSearchInfo():
 
                     # self.saveHouseInfo(_searchInfoModel)
 
-            _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
+            _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.已完成.value,_searchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
         except Exception as e:
             print(e)
-            _updateSearchSql = "Update Searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _searchId)
+            _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _searchId)
             self.cursor.execute(_updateSearchSql)
             self.db.commit()
         finally:
