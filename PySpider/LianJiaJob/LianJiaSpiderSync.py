@@ -1,4 +1,6 @@
 #coding:utf-8
+import time
+
 import pymysql
 
 from LianJiaJob.Common import Common
@@ -56,6 +58,8 @@ class LianJiaSpiderSync:
                     # 删除redis中爬取结果
                     _redisOper.delKeys(*_resultList)
 
+            _now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+            print('执行时间：%s 完成爬虫结果Redis同步Mysql任务，同步查询结果集%s个' % (_now,len(_resultDict)))
         except Exception as ex:
             print(ex)
             _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.异常.value, _currentSearchId)
