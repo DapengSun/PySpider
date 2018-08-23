@@ -99,7 +99,10 @@ class ErShoufangSearchInfo():
                     # 二手房详情链接
                     _houseInfoUrl = houseInfo.find('a')["href"]
                     # 二手房编码
-                    _houseInfoCode = houseInfo.find('a')["data-housecode"]
+                    _houseInfoCode = ''
+                    _houseInfoCode = houseInfo.find('a').get('data-housecode', None)
+                    if _houseInfoCode == None:
+                        _houseInfoCode = houseInfo.find('a').get('data-lj_action_housedel_id', None)
                     # 二手房封面缩略图
                     _surfacePlotThumbnail = houseInfo.find('a').find('img',class_="lj-lazy")["data-original"]
                     # 二手房名称
