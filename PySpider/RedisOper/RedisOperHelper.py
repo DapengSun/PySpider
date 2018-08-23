@@ -101,6 +101,7 @@ class RedisOperHelper(object):
     def hashHsetnx(self,name):
         return self.db.hvals(name)
 
+
     # Hdel 命令用于删除哈希表 key 中的一个或多个指定字段，不存在的字段将被忽略。
     def hashHdel(self,name,*key):
         return self.db.hdel(name,*key)
