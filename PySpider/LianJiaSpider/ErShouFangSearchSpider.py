@@ -144,9 +144,11 @@ class ErShoufangSearchInfo():
                     # 二手房楼层
                     _houseFloor = _housePositionInfo[0]
                     # 二手房年代
+                    _houseYear = ''
                     if len(_houseDetailInfoList) >= 3:
                         _houseYear = _housePositionInfo[2]
                     # 二手房地区
+                    _houseArea = ''
                     if len(_houseDetailInfoList) >= 5:
                         _houseArea = _housePositionInfo[4].text
 
