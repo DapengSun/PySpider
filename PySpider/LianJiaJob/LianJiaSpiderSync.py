@@ -35,25 +35,26 @@ class LianJiaSpiderSync:
                 # 获取Id为前缀的爬虫结果
                 _resultList = _redisOper.keys(_searchId)
 
-                for item in _resultList:
-                    _itemList = _redisOper.hashHgetAll(item)
-                    _searchInfoModel = SearchInfoModel(_itemList['SearchId'],_itemList['HouseInfoUrl'], _itemList['HouseInfoCode'], _itemList['SurfacePlotThumbnail'],
-                                                       _itemList['HouseTitle'], _itemList['HouseTag'], _itemList['HouseAddressUrl'],
-                                                       _itemList['HouseAddressName'], _itemList['HousePattern'],_itemList['HouseSize'],_itemList['HouseOrientation'],
-                                                       _itemList['HouseCover'], _itemList['HouseElevator'],_itemList['HouseFloor'],
-                                                       _itemList['HouseYear'], _itemList['HouseArea'],_itemList['HousePeoperNum'],_itemList['HouseLookNum'],
-                                                       _itemList['HouseFollowSubway'], _itemList['HouseTaxFree'],_itemList['HouseHasKey'],
-                                                       _itemList['HouseTotalPrice'], _itemList['HouseUnitPrice'])
+                if len(_resultList) > 0:
+                    for item in _resultList:
+                        _itemList = _redisOper.hashHgetAll(item)
+                        _searchInfoModel = SearchInfoModel(_itemList['SearchId'],_itemList['HouseInfoUrl'], _itemList['HouseInfoCode'], _itemList['SurfacePlotThumbnail'],
+                                                           _itemList['HouseTitle'], _itemList['HouseTag'], _itemList['HouseAddressUrl'],
+                                                           _itemList['HouseAddressName'], _itemList['HousePattern'],_itemList['HouseSize'],_itemList['HouseOrientation'],
+                                                           _itemList['HouseCover'], _itemList['HouseElevator'],_itemList['HouseFloor'],
+                                                           _itemList['HouseYear'], _itemList['HouseArea'],_itemList['HousePeoperNum'],_itemList['HouseLookNum'],
+                                                           _itemList['HouseFollowSubway'], _itemList['HouseTaxFree'],_itemList['HouseHasKey'],
+                                                           _itemList['HouseTotalPrice'], _itemList['HouseUnitPrice'])
 
 
-                    self.saveHouseInfo(_searchInfoModel)
+                        self.saveHouseInfo(_searchInfoModel)
 
-                _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.结果入库.value, _currentSearchId)
-                self.cursor.execute(_updateSearchSql)
-                self.db.commit()
+                    _updateSearchSql = "Update searchinfo Set Status = '%s' Where SearchId = '%s'" % (SpiderJobStatus.结果入库.value, _currentSearchId)
+                    self.cursor.execute(_updateSearchSql)
+                    self.db.commit()
 
-                # 删除redis中爬取结果
-                _redisOper.delKeys(*_resultList)
+                    # 删除redis中爬取结果
+                    _redisOper.delKeys(*_resultList)
 
         except Exception as ex:
             print(ex)
