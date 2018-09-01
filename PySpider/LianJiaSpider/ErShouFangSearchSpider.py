@@ -83,9 +83,12 @@ class ErShoufangSearchInfo():
             _searchDate = time.strftime('%Y%m%d%H%M%S', time.localtime())
             _searchId = ('s_result_%s') % _searchDate
 
+            _subString = "https://bj.lianjia.com/ershoufang/rs"
+            _searchName =  url[len(_subString):-1]
+
             # 状态位 0-待启动 1-启动中 2-已完成 3-结果入库 -1-异常
-            _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate) VALUES('%s','%s','%d','%s')" % (
-            _searchId, url, SpiderJobStatus.启动中.value, _searchDate)
+            _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate,SearchName) VALUES('%s','%s','%d','%s','%s')" % (
+            _searchId, url, SpiderJobStatus.启动中.value, _searchDate,_searchName)
             self.cursor.execute(_createSearchSql)
             self.db.commit()
 
