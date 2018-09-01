@@ -84,7 +84,7 @@ class ErShoufangSearchInfo():
             _searchId = ('s_result_%s') % _searchDate
 
             _subString = "https://bj.lianjia.com/ershoufang/rs"
-            _searchName =  url[len(_subString):]
+            _searchName = url[len(_subString):].strip()
 
             # 状态位 0-待启动 1-启动中 2-已完成 3-结果入库 -1-异常
             _createSearchSql = "insert into searchinfo(SearchId,SearchUrl,Status,CDate,SearchName) VALUES('%s','%s','%d','%s','%s')" % (
