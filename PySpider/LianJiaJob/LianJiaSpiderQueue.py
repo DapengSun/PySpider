@@ -13,3 +13,7 @@ class LianJiaSpiderQueue(object):
 
 # _spiderJob = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs方庄/')
 # _spiderJob.pushjobqueue()
+
+if __name__ == '__main__':
+    l = LianJiaSpiderQueue('https://bj.lianjia.com/ershoufang/rs方庄/')
+    l.pushjobqueue()

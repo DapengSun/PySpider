@@ -1,6 +1,11 @@
 #coding:utf-8
 
-from LianJiaJob.LianJiaSpiderJob import LianJiaSpiderJob
+from LianJiaJob import LianJiaSpiderJob
 
-_spiderJob = LianJiaSpiderJob()
-_spiderJob.getspiderjob()
+# def StartSpiderJob():
+    # _spiderJob = LianJiaSpiderJob()
+    # _spiderJob.getspiderjob()
+    # return 5
+    # LianJiaSpiderJob.getspiderjob()
+
+LianJiaSpiderJob.getspiderjob.delay()
