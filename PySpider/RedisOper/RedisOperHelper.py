@@ -4,13 +4,21 @@ import redis
 import time
 
 class RedisOperHelper(object):
-    def __init__(self):
-        pool = redis.ConnectionPool(host='localhost', port=6379, decode_responses=True)
+    def __init__(self,redisArgs):
+        pool = redis.ConnectionPool(**redisArgs)
         self.db = redis.Redis(connection_pool=pool)
 
     # 获取所有执行的key值
     def keys(self,pattern):
         return self.db.keys(pattern)
+
+    # 设置str
+    def setStr(self,key,value):
+        return self.db.set(key,value)
+
+    # 获取str
+    def getStr(self,key):
+        return self.db.get(key)
 
     # 删除执行的key
     def delKeys(self,*names):
